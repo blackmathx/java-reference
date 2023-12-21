@@ -1,0 +1,39 @@
+Test and explore
+---------------------------------------------------------------------------------------------
+
+1. Look at instance blocks of code. The rule is that static variables/blocks/methods
+   in order then instance variables/blocks/methods in order
+   
+    private gills;
+    { int test = gills;}
+
+2. jar command
+
+3.
+
+4. To compile to another target directory: javac -d <folder> packagea/MyClass.java
+   To run it: java -cp <classpathOrFolder> packagea.MyClass
+   Also -cp = -classpath = --class-path
+   Creating jars: https://www.baeldung.com/java-create-jar
+   
+
+5. java datatypes. p27
+
+6. Each wrapper  has a valueOf() method such as Boolean.valueOf(true); Double.valueOf(1.0);
+   The Integer.parseInt("123"); Double.parseDouble("2.3"); converts strings to primitives
+
+7. Java reserved words p35. var is not a reserved word and may be used as an identifier, it is a reserved type name
+
+8. var question; // DNC p43. final variables can be initialized like this. vars must on the same line
+   quesiton = 1; 
+
+9. numeric promotion
+  a. java automatically promotes a value to the larger type
+  b. if one is integral and other is floating point, java promotes integral to floating points type
+  c. smaller types, byte short char, are first promoted to int any time used with binary arithemtic operators even if neither is an int. p75
+      example: short x = 10;
+               short y = 23;
+               var z = x + y; // resulting in int
+
+
+10. 
