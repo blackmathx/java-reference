@@ -17,9 +17,9 @@ public class b_Arrays {
 
     int a = first.length; // returns length
     int[] clone = first.clone(); //
-    int x = first[2]; // 2
+    int intAt2 = first[2]; // 2
     Arrays.sort(first); // [1, 2, 4, 6]
-    first.toString(); // returns the address
+    String str = first.toString(); // returns the address
     List<Integer> mylist = Arrays.asList(fifth);
     System.out.println(mylist);
     
