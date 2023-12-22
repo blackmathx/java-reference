@@ -21,7 +21,7 @@ public class z_Sandbox {
     Integer a = 10, b = 10;
     System.out.println(a == b); // true
     System.out.println(a.equals(b)); // true
-    // When does this fail?
+    // This fails after 127
 
     int p = 2;
     Integer q = 2;
