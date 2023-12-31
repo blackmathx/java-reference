@@ -46,6 +46,7 @@ public class a_Strings {
 
 
     String var201 = temp.trim(); // remove whitespace from leading and trailing
+    // use strip() method instead of trim()
     String var202 = temp.strip(); // newer version of trim(). remove whitespace from leading and trailing including unicode characters
     String var203 = temp.stripLeading();
     String var204 = temp.stripTrailing();
@@ -70,20 +71,9 @@ public class a_Strings {
     String value2 = String.valueOf(new char[] { 'a', 'b', 'c' }); // only works for char[]. use Arrays.toString()
     String value6 = String.valueOf(new int[] { 1, 2, 3 }); // returns the Address of object!! only works for char[]
     String value3 = String.valueOf(true); // returns "true"
-    String value4 = String.valueOf(23.4); // retrns "23.4"
+    String value4 = String.valueOf(23.4); // returns "23.4"
 
 
-
-//    String test1 = "hello";
-//    String test2 = "   hello ".trim();
-//    String test3 = " hello".trim();
-//    System.out.println("test1 == test2? " + (test1 == test2)); // false
-//    System.out.println("test1.equals(test11))? " + test1.equals(test3)); // true
-//    System.out.println("test1 == test11? " + (test1 == test3)); // false
-//    String test4 = "hello";
-//    String test5 = " hello".trim();
-//    String test6 = "  hello".trim();
-//    System.out.println("test3.equals(test4)? " + test4.equals(test5)); //
 
 
 
