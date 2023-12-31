@@ -25,15 +25,16 @@ Test and explore
 7. Java reserved words p35. var is not a reserved word and may be used as an identifier, it is a reserved type name
 
 8. var question; // DNC p43. final variables can be initialized like this. vars must on the same line
-   quesiton = 1; 
+   question = 1;
 
 9. numeric promotion
   a. java automatically promotes a value to the larger type
   b. if one is integral and other is floating point, java promotes integral to floating points type
-  c. smaller types, byte short char, are first promoted to int any time used with binary arithemtic operators even if neither is an int. p75
+  c. smaller types, byte short char, are first promoted to int any time used with binary arithmetic operators even if neither is an int. p75
       example: short x = 10;
                short y = 23;
                var z = x + y; // resulting in int
 
 
-10. 
+10. equals() vs ==
+    a.

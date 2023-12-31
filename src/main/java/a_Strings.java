@@ -91,18 +91,18 @@ public class a_Strings {
     sb.reverse();
 
     System.out.println("sb 1: " + sb);
-    StringBuilder var66 = sb.insert(7, "###"); // insert string at index 7. changes sb and returns a reference to the same obj
+    StringBuilder var66 = sb.insert(7, "###"); // insert string at index 7. it can change sb and return a reference to the same obj
     var66.insert(8, "# # # # #"); // also changes sb, same object!
 
     sb.insert(sb.length(), " "); // adds blank space at the end
     sb.replace(3, 6, "XY"); // replace form 3 to before 6 with the value
     sb.delete(3, 5); // delete from 3 to before 5
-    sb.deleteCharAt(3);
+    sb.deleteCharAt(3); // delete char at index 3
 
 
     StringBuilder var80 = new StringBuilder("a");
     StringBuilder var81 = new StringBuilder("a");
-    StringBuilder var82 = var80.append("xyz"); // able to return StringBuilder
+    StringBuilder var82 = var80.append("xyz"); // able to return StringBuilder. reference to the same object
     System.out.println(var80 == var81); // false
     System.out.println(var80 == var82); // true
 
