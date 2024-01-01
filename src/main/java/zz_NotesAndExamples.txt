@@ -46,3 +46,14 @@ Test and explore
     g. Calling String str = " string".strip(); will add it to the heap. str1 += "other" returns a new string since strings immutable, like calling new String()
     h. Calling String str = new String("string").intern(); will tell java to use the string pool
 
+11. Methods
+    a. private, 'package' (no modifier, from a class within the same package), protected (class in the same package or a subclass), public
+    b. local variable modifiers: final. Effectively final means it's not modified after assigned
+    c. instance variable modifiers: private, 'package', protected, public. Also final (must be initialized once), volatile (this variable may be modified by othe threads),
+        transient (means this should not be serialized with the class)
+    d. varargs, can only be one and it must be last walk(int... steps); walk(int start, int... steps); Calling by passing in an array or list the elements
+        walk(1, 2, 3); walk(new int[] {1, 2, 3});
+    e. static methods and variables belong to the class not an instance, can be called without intantiating the class
+    f. static imports used to improt static methods: import static java.util.Arrays.asList;
+
+

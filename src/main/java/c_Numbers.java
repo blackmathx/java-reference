@@ -12,6 +12,12 @@ public class c_Numbers{
     long var2 = var1.longValue();
     double var3 = var1.doubleValue();
     short var4 = var1.shortValue();
+
+    // valueOf methods convert from primitive or string to Wrapper class
+    int varInt = 4;
+    Integer varInt2 = Integer.valueOf(varInt); // Each wrapper class has valueOf() methods
+    Double varDouble = Double.valueOf("2.34");
+    
     
 
     // The byte data type can store whole numbers from -128 to 127. 8 bit integer
