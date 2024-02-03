@@ -1,6 +1,7 @@
 
 import java.util.Arrays;
 
+@SuppressWarnings("unused")
 public class z_Sandbox {
 
   public static void runner() {

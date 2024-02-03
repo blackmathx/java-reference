@@ -1,8 +1,8 @@
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class b_Arrays {
 
   public static void runner() {
