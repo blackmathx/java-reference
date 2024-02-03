@@ -1,7 +1,7 @@
 
 import java.lang.Math;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("all")
 public class c_Numbers{
 
   public static void runner(){

@@ -1,7 +1,7 @@
 
 import java.util.Arrays;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("all")
 public class a_Strings {
 
   public static void runner() {

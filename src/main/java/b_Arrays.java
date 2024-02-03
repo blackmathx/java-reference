@@ -2,7 +2,7 @@
 import java.util.Arrays;
 import java.util.List;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("all")
 public class b_Arrays {
 
   public static void runner() {
