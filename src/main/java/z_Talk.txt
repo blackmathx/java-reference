@@ -1,0 +1,51 @@
+
+
+primitives
+----------
+byte, short, int, long, float, double, char. memorize in order
+you get implicit casting from smaller to larger, otherwise explicitly cast them
+they can't be null, where objects can be null. consequence is int id != null in an object
+
+
+Strings
+-------
+look at all the String methods, changing a String gives a new String.
+Then look at StringBuilder. it does not create a new String each modification, instead you call toString()
+
+
+Numbers
+-------
+Using numbers, each Wrapper method has a set of methods on it for getting values and casting
+look at creating bytes, shorts, ints, longs, floats, doubles
+you cant do this> float x = 2.334342; It will interpret as double first then can't cast, use f at the end
+look at creating octal digits
+look at creating hexidecimal digits
+look at binary digits
+Look at Math class
+
+
+Arrays
+------
+Creating arrays, copying and cloning.
+Methods on arrays
+compare, mismatch, binary search
+
+
+Methods
+-------
+variable access modifiers
+order of initialization
+no args constructor requirements
+abstract methods
+interfaces
+
+
+
+
+
+
+
+
+
+
+

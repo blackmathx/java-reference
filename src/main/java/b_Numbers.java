@@ -2,7 +2,7 @@
 import java.lang.Math;
 
 @SuppressWarnings("all")
-public class c_Numbers{
+public class b_Numbers {
 
   public static void runner(){
     System.out.println("\n=== Numbers =================\n");
@@ -53,7 +53,7 @@ public class c_Numbers{
     double dd = (double) x / (double) y; 
     System.out.println(dd); // 3.5612244302161
 
-    
+
     double xx = 3.49d;
     double yy = 0.98d;
     double zz = xx/yy; // 3.5612244897959187 // acutal value
