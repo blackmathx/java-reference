@@ -13,9 +13,13 @@ public class _Main {
         b_Numbers.runner();
         //c_Arrays.runner();
         //d_DateAndTime.runner();
+        //e_FileIO.runner();
+        //f_LambdasAndStreams.runner();
+        //g_Threads.runner();
+
         //z_Sandbox.runner();
 
-        lambda._Runner.run();
+        //lambda._Runner.run();
 
 
 
@@ -26,7 +30,7 @@ public class _Main {
 
 
 
-/*
+        /*
         //Season summer = Season.SUMMER;
         System.out.println("BEGIN");
         System.out.println(Season.SUMMER.getSomething());
@@ -60,7 +64,7 @@ public class _Main {
         System.out.println(c.test());
         System.out.println(Animal.count());
 
-         */
+        */
     }
 
 }

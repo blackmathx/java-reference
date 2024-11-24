@@ -1,5 +1,7 @@
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings("all")
@@ -32,7 +34,33 @@ public class c_Arrays {
     List<Integer> intList = Arrays.asList(acopy);
     System.out.println(Arrays.toString(Arrays.copyOf(first, 20)));
 
-//    Arrays.asList();
+
+    /* Arrays.asList is immutable, can't .add() to it as in...
+     * List<String> x = Arrays.asList("x", "y");
+     * x.add("f"); // exception
+     */
+
+
+    List<String> list = new ArrayList<>();
+    list.addAll(Arrays.asList("sdf", "fsdfsd", "abc", "def", "ghi")); // proper way to use asList and have immutable array
+    list.add("new list item");
+    System.out.println(list);
+    list.forEach(j -> System.out.println(j));
+
+    String aarray[] = new String[] { "A", "B", "C", "D" };
+    List<String> llist = Arrays.asList(aarray);
+    llist = new ArrayList<>(llist);
+    llist.add("sfs"); // or this
+
+    List<String> lll = Arrays.asList("test", "two");
+    lll = new ArrayList<>(lll); // or this
+    lll.add("newly added");
+    lll.set(0, "xtest");
+    Collections.sort(lll);
+    Object[] obj = lll.toArray();
+
+
+
 //    Arrays.sort();
 //    Arrays.equals();
 //    Arrays.binarySearch();
@@ -73,8 +101,6 @@ public class c_Arrays {
     // returns index where element is found, or if not found it returns the ( -(index where it should be + 1) );
     int intSearch2 = Arrays.binarySearch(new int[] {2, 4, 7, 9}, 3); // should go at index 1, so returns -2. (this is because 0 is already an index, consider searching for 1 (returns -1))
 
-
-    
   }
 
 }
