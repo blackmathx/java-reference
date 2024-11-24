@@ -3,11 +3,11 @@ import java.util.concurrent.Executors;
 
 
 
-public class g_Threads {
+public class h_Threads {
 
     public static void run() {
+        System.out.println("\n=== Threads =================\n");
 
-        System.out.println("[Running _Threads]");
 
         DoSomething doSth = new DoSomething("One"); // instance of class implementing runnable
         Thread newDS = new Thread(doSth); 			// create a new thread

@@ -4,8 +4,8 @@ import java.util.Arrays;
 @SuppressWarnings("all")
 public class z_Sandbox {
 
-  public static void runner() {
-    System.out.println("\n=== Sandbox Notes ================\n");
+  public static void run() {
+    System.out.println("\n=== Sandbox ================\n");
     
     // ================================================================
     /*

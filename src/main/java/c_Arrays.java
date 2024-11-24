@@ -7,20 +7,20 @@ import java.util.List;
 @SuppressWarnings("all")
 public class c_Arrays {
 
-  public static void runner() {
-
+  public static void run() {
     System.out.println("\n=== Arrays ==================\n");
 
     int[] first = new int[] { 1, 4, 3, 6, 9, 5, 8 };
+    String var100 = Arrays.toString(first); // returns "[1, 4, 3, 6, 9, 5, 8]"
     int[] second = {4, 3, 1, 4, 5};
     char[] third = "test".toCharArray();
     String[] fourth = { "mock", "ing", "yeah", "bird" };
     Integer[] fifth = { 4, 3, 23, 26, 21, 29, 18, 28 };
 
     int len = first.length; // returns length
-    int[] clone = first.clone(); //
-    System.out.println("clone == first: " + (clone==first));
-    System.out.println("clone.equals(first): " + Arrays.equals(first, clone));
+    int[] clone = first.clone();
+    System.out.println("clone == first: " + (clone == first)); // false, the are not equal as objects
+    System.out.println("clone.equals(first)?: " + Arrays.equals(first, clone)); // true, the contents are compared (but compareTo is not implemented in arrays)
     int intAt2 = first[2]; // 2
     Arrays.sort(first); // [1, 2, 4, 6]
     String str = first.toString(); // returns the address. use Arrays.toString(first);

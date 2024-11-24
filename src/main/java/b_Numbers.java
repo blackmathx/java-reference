@@ -4,17 +4,25 @@ import java.lang.Math;
 @SuppressWarnings("all")
 public class b_Numbers {
 
-  public static void runner(){
+  public static void run(){
     System.out.println("\n=== Numbers =================\n");
 
-    // each Numeric class extends Number so they come with helper methods such as .intValue(), .doubleValue(), etc.
+    /*
+     * byte, short, int, long, float, double, char. memorize in order
+     * you get implicit casting from smaller to larger, otherwise explicitly cast them
+     * primitives can't be null, where objects can be null. the typical consequence is using 'int id' in an object, it can't be null so use Long or Integer instead
+     */
+
+
+
+    // Each numeric class extends Number, so they all come with helper methods such as .intValue(), .doubleValue(), etc.
     // These return the primitive value, but will be boxed to Wrapper if needed
     Integer var1 = 4;
     long var2 = var1.longValue();
     double var3 = var1.doubleValue();
     short var4 = var1.shortValue();
 
-    // valueOf methods convert from primitive or string to Wrapper class
+    // Each numerica class has a valueOf method to convert from primitive or string to the Wrapper class
     int varInt = 4;
     Integer varInt2 = Integer.valueOf(varInt); // Each wrapper class has valueOf() methods
     Double varDouble = Double.valueOf("2.34");
@@ -69,21 +77,44 @@ public class b_Numbers {
     // binary digits. start with 0b
     int bin = 0b1010;
 
-    // ===== MATH =======================================
-    // java.lang.Math
-
-    double value1 = Math.min(12.3876, 10.2986);
-    System.out.println(value1);
-    long value2 = Math.round(value1); // removes decimal portion of a double and returns a long
-    int value3 = Math.round(23.43f); // removes decimal portion of a float and returns an int
-
-    // Math.ceil(double num);
-    // Math.floor(double num);
-    // Math.pow(double num, double exponent);
-    // Math.random(); // returns number equal to 0 and less than 1. [0, 1)
 
 
 
+    // ===== MATH ==============================================
+
+    // This demonstrates the use of java.lang.Math class
+    // Note: each method is overloaded so they take mulltiple data types and retrun multiple data types
+
+    /*
+      Math.random();
+      Math.max(x, y);
+      Math.min(x, y);
+      Math.abs(x);
+      Math.sqrt(x);
+      Math.pow(x, y);
+      Math.round(x);
+      Math.ceil(x);
+      Math.floor(x);
+      Math.sin(x);
+      Math.cos(x);
+      Math.tan(x);
+      Math.log(x);
+      Math.log10(x);
+      Math.log1p(x); // natural log
+      Math.hypot(x, y); // returns sqrt(x^2 + y^2)
+      Math.E
+      Math.PI
+     */
+
+    // Some examples of java.lang.Math
+    double var300 = Math.max(Math.E, Math.PI); // takes doubles or floats
+    int var301 = (int) Math.round(Math.random() * 100); // rounds and returns a long
+    int var302 = Math.round(23.43f);
+    long var303 = Math.round(23.43); // removes decimal portion and returns a long
+    double var304 = Math.ceil(8.9f);
+    double var305 = Math.floor(8.9);
+    double var306 = Math.pow(2.1, 2.4);
+    double var307 = Math.random(); // returns double that is between 0 inclusive and less than 1. [0, 1). ex: 0.8183029608682497
 
     
   }

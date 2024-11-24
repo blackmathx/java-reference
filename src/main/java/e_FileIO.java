@@ -7,7 +7,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class e_FileIO {
-    public static void runner() {
+    public static void run() {
+        System.out.println("\n=== FileIO =================\n");
+
         String root = "";
 
         String osName = System.getProperty("os.name").toLowerCase();
@@ -22,7 +24,7 @@ public class e_FileIO {
             System.exit(0);
         }
 
-
+        System.exit(0); // TODO review the class for correctness
 
 
 
