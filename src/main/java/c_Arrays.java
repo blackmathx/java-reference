@@ -8,83 +8,49 @@ import java.util.List;
 public class c_Arrays {
 
   public static void run() {
-    System.out.println("\n=== Arrays ==================\n");
+    System.out.println("\n======= Arrays =========================\n");
 
-    int[] first = new int[] { 1, 4, 3, 6, 9, 5, 8 };
+    int[] first = new int[] { 1, 4, 3, 6, 9, 5, 8 }; // create an array
+    int[] second = {4, 3, 1, 4, 5}; // simpler way to create array
+    char[] third = "test".toCharArray(); // turn a string to char[] array
+    String[] fourth = { "mock", "ing", "yeah", "bird" }; // create a String[] array
+    Integer[] fifth = { 4, 3, 23, 26, 21, 29, 18, 28 }; // create an Integer[] array
+    int[][] myNumbers = { {1, 2, 3, 4}, {5, 6, 7} }; // multidimensional arrays
+
     String var100 = Arrays.toString(first); // returns "[1, 4, 3, 6, 9, 5, 8]"
-    int[] second = {4, 3, 1, 4, 5};
-    char[] third = "test".toCharArray();
-    String[] fourth = { "mock", "ing", "yeah", "bird" };
-    Integer[] fifth = { 4, 3, 23, 26, 21, 29, 18, 28 };
+
+    // enhanced for loop
+    for(int i : first){
+      System.out.println(i);
+    }
 
     int len = first.length; // returns length
-    int[] clone = first.clone();
-    System.out.println("clone == first: " + (clone == first)); // false, the are not equal as objects
-    System.out.println("clone.equals(first)?: " + Arrays.equals(first, clone)); // true, the contents are compared (but compareTo is not implemented in arrays)
-    int intAt2 = first[2]; // 2
-    Arrays.sort(first); // [1, 2, 4, 6]
-    String str = first.toString(); // returns the address. use Arrays.toString(first);
-    System.out.println("string: " + Arrays.toString(first));
-    String str2 = Arrays.toString(first); // returns string
-    List<Integer> mylist = Arrays.asList(fifth);
-    System.out.println(mylist);
-    
-    Arrays.sort(fifth);
-    Integer[] acopy = Arrays.copyOf(fifth, 4); // new length can truncate or extend
-    List<Integer> intList = Arrays.asList(acopy);
-    System.out.println(Arrays.toString(Arrays.copyOf(first, 20)));
-
-
-    /* Arrays.asList is immutable, can't .add() to it as in...
-     * List<String> x = Arrays.asList("x", "y");
-     * x.add("f"); // exception
-     */
-
-
-    List<String> list = new ArrayList<>();
-    list.addAll(Arrays.asList("sdf", "fsdfsd", "abc", "def", "ghi")); // proper way to use asList and have immutable array
-    list.add("new list item");
-    System.out.println(list);
-    list.forEach(j -> System.out.println(j));
-
-    String aarray[] = new String[] { "A", "B", "C", "D" };
-    List<String> llist = Arrays.asList(aarray);
-    llist = new ArrayList<>(llist);
-    llist.add("sfs"); // or this
-
-    List<String> lll = Arrays.asList("test", "two");
-    lll = new ArrayList<>(lll); // or this
-    lll.add("newly added");
-    lll.set(0, "xtest");
-    Collections.sort(lll);
-    Object[] obj = lll.toArray();
-
-
-
-//    Arrays.sort();
-//    Arrays.equals();
-//    Arrays.binarySearch();
-//    Arrays.parallelSort();
-//    Arrays.compare();
-//    Arrays.compareUnsigned();
-//    Arrays.mismatch();
-//    Arrays.fill();
-//    Arrays.toString();
-//    Arrays.stream();
-
-    System.out.println(Arrays.toString(Arrays.copyOfRange(first, 2, 5)));
+    int[] clone = first.clone(); // creates new object as a clone of the array, faster than Arrays.copyOf but you can't truncate or extend
+    Integer[] clone2 = Arrays.copyOf(fifth, fifth.length); // creates a copy, clone is faster but copyOf allows you to truncate or extend
+    System.out.println("clone2 == fifth: " + (clone2 == fifth)); // false, they are not equal as objects
+    System.out.println("clone == first: " + (clone == first)); // false, they are not equal as objects
+    System.out.println("clone.equals(first): " + Arrays.equals(first, clone)); // true, the contents are compared (but compareTo is not implemented in arrays)
+    int var150 = first[2]; // the value at index 2, which is 3
     Arrays.sort(first);
-    Arrays.fill(first, 5); // fills the array with the second parameter
+    String var155 = first.toString(); // returns the address. use Arrays.toString(first);
+    System.out.println(Arrays.toString(first)); // it's now sorted "[1, 3, 4, 5, 6, 8, 9]"
+    String var160 = Arrays.toString(first); // "[1, 3, 4, 5, 6, 8, 9]"
+    Arrays.fill(second, 1); // fills the array with the second parameter
+    System.out.println(Arrays.toString(second)); // "[1, 1, 1, 1, 1]"
 
 
-    int compare = Arrays.compare(fifth, acopy); // returns 0 if equal,  negative int if first is less, a positive int if first is bigger.
-    // first is smaller when second has more elements, and vice versa
-    // if the first element that differs is smaller in the first array return negative. smaller is in this order: null, numbers-uppercase-lowercase
+
+    /* Using Arrays.compare(T[] first, S[] second);
+     * returns 0 if equal, negative int if first is smaller, and a positive int if first is bigger.
+     * first is smaller when second has more elements, and vice versa
+     * if the first element that differs is smaller in the first array return negative. smaller is in this order: null, numbers-uppercaseLetters-lowercaseLetters
+     */
+    int compare = Arrays.compare(fifth, clone2);
     // compare {2, 3} to {2} returns positive number
     // compare {1, 2} to {1, 2} returns 0
     // compare {"a"} to {"aa"} returns negative
-    // compare {"a"} to {"A"} returns positive
-    // compare {"a"} to {null} returns positive
+    // compare {"a"} to {"A"} returns positive because "a" is bigger than "A" as Lowercase is bigger than Uppercase
+    // compare {"a"} to {null} returns positive because "a" is bigger
     // compare {1} to {"a"} Does Not Compile
 
 
@@ -96,10 +62,48 @@ public class c_Arrays {
     // mismatch {1, 2} and {1} returns 1
 
 
-    boolean boolEqual = Arrays.equals(first, second); // boolean
-    int intSearch = Arrays.binarySearch(first, 9); // needs to be sorted for accurate results
-    // returns index where element is found, or if not found it returns the ( -(index where it should be + 1) );
-    int intSearch2 = Arrays.binarySearch(new int[] {2, 4, 7, 9}, 3); // should go at index 1, so returns -2. (this is because 0 is already an index, consider searching for 1 (returns -1))
+    /* Arrays.binearySearch(T[] a, int key);
+     * needs to be sorted for accurate results.
+     * returns index where element is found, or if not found it returns the ( -(index where it should be + 1) );
+     * this is because 0 is already an index, consider searching for 1  in {2, 4}. so it returns (returns -1)
+     */
+    int var310 = Arrays.binarySearch(new int[] {2, 3, 7}, 9);
+    int var320 = Arrays.binarySearch(new int[] {2, 4, 7, 9}, 3); // should end searching at index 1, so returns -2.
+
+
+    // Other methods to use with Arrays
+    //    Arrays.sort();
+    //    Arrays.equals();
+    //    Arrays.binarySearch();
+    //    Arrays.parallelSort();
+    //    Arrays.compare();
+    //    Arrays.compareUnsigned();
+    //    Arrays.mismatch();
+    //    Arrays.fill();
+    //    Arrays.toString();
+    //    Arrays.stream();
+
+
+    // Arrays and Lists together
+    System.out.println("-- Using Arrays and Lists together --");
+    List<Integer> var200 = Arrays.asList(fifth); // convert array to List of Integers
+    System.out.println(var200); // [4, 3, 23, 26, 21, 29, 18, 28]
+    Collections.sort(var200);
+    Integer[] var210 = var200.toArray(new Integer[0]); // convert List to Array
+    Integer[] var220 = var200.toArray(Integer[]::new); // alternate syntax using a method reference
+
+
+    // Arrays.asList is immutable, can't .add() to it as in...
+    List<String> var250 = Arrays.asList("x", "y", "z"); // immutable
+    //var250.add("f"); // exception
+
+    // Instead, the proper way to use Arrays.asList and have mutability is this...
+    List<String> var260 = new ArrayList<>();
+    var260.addAll(Arrays.asList("sdf", "fsdfsd", "abc", "def", "ghi")); // proper way to use asList and have immutable array
+    var260.add("new list item");
+    var260.forEach(j -> System.out.println(j));
+
+
 
   }
 

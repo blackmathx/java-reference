@@ -5,7 +5,7 @@ import java.lang.Math;
 public class b_Numbers {
 
   public static void run(){
-    System.out.println("\n=== Numbers =================\n");
+    System.out.println("\n======= Numbers =================\n");
 
     /*
      * byte, short, int, long, float, double, char. memorize in order

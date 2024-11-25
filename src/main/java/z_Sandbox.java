@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class z_Sandbox {
 
   public static void run() {
-    System.out.println("\n=== Sandbox ================\n");
+    System.out.println("\n======= Sandbox ================\n");
     
     // ================================================================
     /*

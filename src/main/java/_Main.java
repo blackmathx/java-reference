@@ -7,7 +7,8 @@ public class _Main {
 
 //        a_Strings.run();              // reviewed
 //        b_Numbers.run();              // reviewed
-        c_Arrays.run();
+//        c_Arrays.run();               // reviewed
+//        d_Collections.run();
 //        d_DateAndTime.run();
 //        e_FileIO.run();
 //        f_LambdasAndStreams.run();

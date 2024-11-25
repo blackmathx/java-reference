@@ -7,7 +7,7 @@ public class d_DateAndTime{
 
   
   public static void run(){
-    System.out.println("\n=== DateAndTime ================\n");
+    System.out.println("\n======= DateAndTime ================\n");
 
     // TODO rewrite the class for completeness and correctness
 

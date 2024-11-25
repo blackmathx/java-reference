@@ -4,7 +4,7 @@ import java.util.Arrays;
 public class a_Strings {
 
   public static void run() {
-    System.out.println("\n=== Strings =================\n");
+    System.out.println("\n======= Strings =================\n");
 
     String str = "Welcome to the jungle";
 

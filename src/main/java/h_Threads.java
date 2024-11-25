@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 public class h_Threads {
 
     public static void run() {
-        System.out.println("\n=== Threads =================\n");
+        System.out.println("\n======= Threads =================\n");
 
 
         DoSomething doSth = new DoSomething("One"); // instance of class implementing runnable

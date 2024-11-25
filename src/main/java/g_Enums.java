@@ -4,7 +4,7 @@
 public class g_Enums {
 
     public static void run(){
-        System.out.println("\n=== Enums =================\n");
+        System.out.println("\n======= Enums =================\n");
 
         //Season summer = Season.SUMMER;
 //        System.out.println("BEGIN");
