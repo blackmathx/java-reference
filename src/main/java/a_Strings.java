@@ -28,6 +28,8 @@ public class a_Strings {
     char var12 = str.charAt(2); // returns 'l'
     char[] var13 = str.toCharArray(); // splits the string into a char array
 
+    // String methods that return a String creates a new String at each modification and performance can become a factor
+
     String[] var14 = str.split(" "); // splits string on spaces into String[], [Welcome, to, the, jungle]
     String[] var15 = str.split(" ", 3); // limit number of splits, returns [Welcome, to, the jungle]
     String[] var16 = str.split("\\s"); // split string on 'spaces', same as split(" "), [Welcome, to, the, jungle]
@@ -66,6 +68,8 @@ public class a_Strings {
     // ===== STRINGBUILDER =======================================
 
     StringBuilder sb = new StringBuilder("Work on your system");
+
+    // StringBuilder does not create a new String each modification, instead you call toString()
 
     int var401 = sb.length();
     String var402 = sb.substring(1, 3); // from index 1 to exclusive 3, "or"

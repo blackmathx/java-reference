@@ -9,7 +9,13 @@ Test and explore
 
 2. jar command
 
-3.
+3. Topics with Methods
+        variable access modifiers
+        order of initialization
+        no args constructor requirements
+        abstract methods
+        interfaces
+
 
 4. To compile to another target directory: javac -d <folder> packagea/MyClass.java
    To run it: java -cp <classpathOrFolder> packagea.MyClass
