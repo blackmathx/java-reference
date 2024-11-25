@@ -1,7 +1,7 @@
 
 
 
-public class g_Enums {
+public class h_Enums {
 
     public static void run(){
         System.out.println("\n======= Enums =================\n");
