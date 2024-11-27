@@ -18,7 +18,7 @@ public class f_FileIO {
             root = "C:\\Development\\temp";
         } else if (osName.contains("nix") || osName.contains("nux") || osName.contains("aix")) {
             System.out.println("Linux/Unix filesystem detected.");
-            root = "/temp";
+            root = "/tmp";
         } else {
             System.out.println("Unknown filesystem.");
             System.exit(0);
