@@ -28,13 +28,14 @@ public class a_Strings {
     char var12 = str.charAt(2); // returns 'l'
     char[] var13 = str.toCharArray(); // splits the string into a char array
 
-    // String methods that return a String creates a new String at each modification and performance can become a factor
-
     String[] var14 = str.split(" "); // splits string on spaces into String[], [Welcome, to, the, jungle]
     String[] var15 = str.split(" ", 3); // limit number of splits, returns [Welcome, to, the jungle]
     String[] var16 = str.split("\\s"); // split string on 'spaces', same as split(" "), [Welcome, to, the, jungle]
     String[] var17 = "ttestingtesttt".split("t"); // splits String into String[], [, , es, ing, es] // empty is ignored at the end
 
+    /*
+     * String methods that return a String create a new String at each modification and performance can become a factor
+     */
     String var18 = str.substring(5); // begins with character at index to the end
     String var19 = str.substring(1, 4); // begins with character at index and ends at the 'exclusive' index, "elc". doesn't print index 4
     String var20 = str.substring(0, 0); // from 0 to 0 so nothing

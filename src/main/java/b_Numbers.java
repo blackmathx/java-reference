@@ -16,74 +16,58 @@ public class b_Numbers {
 
 
     // Each numeric class extends Number, so they all come with helper methods such as .intValue(), .doubleValue(), etc.
-    // These return the primitive value, but will be boxed to Wrapper if needed
-    Integer var1 = 4;
-    long var2 = var1.longValue();
-    double var3 = var1.doubleValue();
-    short var4 = var1.shortValue();
+    Integer var10 = 4;
+    long var20 = var10.longValue();
+    double var30 = var10.doubleValue(); // returns primitive value
+    Double var35 = var10.doubleValue(); // returns primitive value, but will be boxed to wrapper if needed
+    short var40 = var10.shortValue();
 
-    // Each numerica class has a valueOf method to convert from primitive or string to the Wrapper class
-    int varInt = 4;
-    Integer varInt2 = Integer.valueOf(varInt); // Each wrapper class has valueOf() methods
+
+    // Each numeric class has a static valueOf() method to convert from primitive or string to the Wrapper class
+    int var50 = 4;
+    Integer var60 = Integer.valueOf(var50); // Each wrapper class has valueOf() methods
     Double varDouble = Double.valueOf("2.34");
+    Double var70 = Double.valueOf(var50);
+    Float var80 = Float.valueOf("3.49");
     
-    
 
-    // The byte data type can store whole numbers from -128 to 127. 8 bit integer
-    byte myNum = 100;
 
-    // The short data type can store whole numbers from -32768 to 32767. 16 bit integer
-    short myNum2 = 5000;
+    byte myNum = 100;     // The byte data type can store whole numbers from -128 to 127. 8 bit integer
+    short myNum2 = 5000;  // The short data type can store whole numbers from -32768 to 32767. 16 bit integer
+    int myNum3 = 234234;  // The int data type can store whole numbers from -2147483648 to 2147483647.
 
-    // The int data type can store whole numbers from -2147483648 to 2147483647. 
-    // In general the int data type is the preferred data type when we create variables with a numeric value.
-    int myNum3 = 234234;
+    // The long data type can store whole numbers from -9223372036854775808 to 9223372036854775807. 64 bit integer. Used when int is not large enough
+    // L required here because Java interprets as an int before casting to a long and this is too big for int
+    long myNum4 = 9223372036854775807L;
 
-    // The long data type can store whole numbers from -9223372036854775808 to 9223372036854775807. 64 bit integer
-    // This is used when int is not large enough to store the value. Note that you should end the value with an "L":
-    long myNum4 = 9223372036854775807L; // L required because Java interprets as an int before casting to a long and this is too big for int
 
-    // Note that you should end the value with an "f" for floats and "d" for doubles:
-    // float fff = 2.34; //doesn't compile without f suffix or explicit casting
     // 32 bits. 4 bytes, low accuracy. 6-7 decimal digits. not the default float type which is double.
+    // Note that you should end the value with an "f" for floats and "d" for doubles:
+    // float fVariable = 2.34; // doesn't compile without f suffix or explicit casting because it is first interpreted as a double
     float myNum5 = 5.75f;
 
-    // Double data type is also decimal. 
-    // 64 bits, 8 bytes. 15-16 decimal digits. used for more accuracy and more precision
-    double d = 23.43;
+    double d = 23.43; // Double data type is also decimal. 64 bits, 8 bytes. 15-16 decimal digits. used for more accuracy and more precision
 
 
+    // 3.49/.98 is an irrational repeating decimal, 3.5[612244897959183673469387755102040816326530]6122...
     float x = 3.49f, y = 0.98f;
-    float z =  x /  y; 
-    System.out.println(z); // 3.5612245
-
-    // not accurate
-    double dd = (double) x / (double) y; 
-    System.out.println(dd); // 3.5612244302161
+    float z =  x /  y; // 3.5612245
+    double dd = (double) x / (double) y; // 3.5612244302161
+    double xx = 3.49d, yy = 0.98d;
+    double zz = xx/yy; // 3.5612244897959187
 
 
-    double xx = 3.49d;
-    double yy = 0.98d;
-    double zz = xx/yy; // 3.5612244897959187 // acutal value
-    System.out.println(zz);
-
-
-    // octal digits. start with 0
-    int oct = 017;
-  
-    // hexidecimal digits. start with 0x
-    int hex = 0x1A;
-    
-    // binary digits. start with 0b
-    int bin = 0b1010;
-
+    // Octal, Hexidecimal and Binary digits
+    int oct = 017;    // octal digits. start with 0
+    int hex = 0x1A;    // hexidecimal digits. start with 0x
+    int bin = 0b1010;    // binary digits. start with 0b
 
 
 
     // ===== MATH ==============================================
 
-    // This demonstrates the use of java.lang.Math class
-    // Note: each method is overloaded so they take mulltiple data types and retrun multiple data types
+    // java.lang.Math class
+    // Note some methods are overloaded so they take mulltiple data types and retrun multiple data types
 
     /*
       Math.random();
@@ -106,7 +90,7 @@ public class b_Numbers {
       Math.PI
      */
 
-    // Some examples of java.lang.Math
+    // Using java.lang.Math class
     double var300 = Math.max(Math.E, Math.PI); // takes doubles or floats
     int var301 = (int) Math.round(Math.random() * 100); // rounds and returns a long
     int var302 = Math.round(23.43f);
