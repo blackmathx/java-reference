@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 @SuppressWarnings("all")
-public class a_Strings {
+public class b_Strings {
 
   public static void run() {
     System.out.println("\n======= Strings =================\n");
@@ -61,7 +61,7 @@ public class a_Strings {
     String var302 = String.valueOf(new char[] { 'a', 'b', 'c' }); // only works for char[]. use Arrays.toString() for string such as ["p", "e", "t"]
     String var303 = String.valueOf(new String[]{"p", "e", "t"});  // returns the address of the object, [Ljava.lang.String;@5f184fc6. Use Arrays.toString() instead
     String var3035 = Arrays.toString(new String[] {"p", "e", "t"}); // returns "[p, e, t]"
-    String var304 = String.valueOf(new int[] { 1, 2, 3 }); // returns the Address of object, only works for char[]
+    String var304 = String.valueOf(new int[] { 1, 2, 3 }); // returns the Address of object, only works for char[], use Arrays.toString()
     String var305 = String.valueOf(true); // returns "true"
     String var306 = String.valueOf(23.4); // returns "23.4"
 

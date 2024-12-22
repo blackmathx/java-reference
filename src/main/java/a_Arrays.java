@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings("all")
-public class c_Arrays {
+public class a_Arrays {
 
   public static void run() {
     System.out.println("\n======= Arrays =========================\n");
@@ -79,7 +79,6 @@ public class c_Arrays {
     //    Arrays.compareUnsigned();
     //    Arrays.stream();
     //    Arrays.copyOfRance()
-
 
     //========== Arrays and Lists together ==================================
     System.out.println("======= Using Arrays and Lists together =========================");

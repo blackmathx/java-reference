@@ -5,9 +5,9 @@ public class _Main {
 
         // TODO review the class examples for completeness and correctness
 
-//        a_Strings.run();              // reviewed
-//        b_Numbers.run();              // reviewed
-//        c_Arrays.run();               // reviewed
+//        a_Arrays.run();               // reviewed
+//        b_Strings.run();              // reviewed
+//        c_Numbers.run();              // reviewed
 //        d_Collections.run();
 //        d_DateAndTime.run();
 //        e_FileIO.run();

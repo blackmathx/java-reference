@@ -2,7 +2,7 @@
 import java.lang.Math;
 
 @SuppressWarnings("all")
-public class b_Numbers {
+public class c_Numbers {
 
   public static void run(){
     System.out.println("\n======= Numbers =================\n");
