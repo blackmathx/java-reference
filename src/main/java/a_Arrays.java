@@ -38,7 +38,6 @@ public class a_Arrays {
     String var161 = Arrays.toString(second); // "[1, 1, 1, 1, 1]"
 
 
-
     /*
      * Arrays.compare(T[] first, S[] second);
      * returns 0 if equal, negative int if first is smaller, and a positive int if first is bigger.

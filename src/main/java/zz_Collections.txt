@@ -1,0 +1,69 @@
+
+Collections
+================
+
+Make your objects Comparable and Sortable.
+
+Collections Framework uses types that are all in java.util package.
+
+Important interfaces: Collections, Iterator, Comparator, Set, List, Queue, Map, SortedMap.
+
+Collection has methods such as: add, addAll, clear size, isEmpty, toArray.
+
+
+
+
+List is a sub-interface of Collection, ArrayList is an implementation of List.
+// List list = new ArrayList();  // Note you don't have to downcast if you use generics: List<String> l = new ArrayList<>();
+// list.add("one");
+// list.clear();
+// List elts = Arrays.asList("a", "b", "c"); // returns fixed size array
+// Collections.sort(elts);   // sort with Collections static helper methods
+Use the for method to iterator over a Collection. Remember Iterator and how to use it?
+
+
+
+Set does not allow duplicates.
+HashSet allows only one null but order is not guaranteed, and it's faster than TreeSet, LinkedHashSet
+// Set set = new HashSet();
+// set.add("Hello");  // add() returns false if you try to add a duplicate
+
+
+
+
+Queue has methods that support ordering in a FIFO basis.
+Appends elements to the tail of the queue, returns from head.
+// Queue queue = new LinkedList();
+// queue.offer("a");  // offer() returns false if fails
+// queue.add("a");    // add() throws an exception if fails
+// queue.remove();    // remove() returns the element at the head or exception if empty
+// queue.poll()       // like remove, but returns null if empty
+// queue.element()    // returns but does not remove head, if empty throws exception
+// queue.peek()		  // peek() returns but does not remove, if empty returns null
+
+
+
+
+Map holds key/value mappings. There cannot be duplicate keys in a Map, one key to one value.
+// Map map = new HashMap();  // HashTable() is slower because it's the synced version
+// map.put(K key, V value);
+// getValue, getKey, entrySet, keySet, values...
+// map.putAll(Map map);
+// map.remove(K key);
+// map.get(K key);
+
+
+
+Comparable and Sortable (java.lang).
+Compare Strings with equals(), and compare objects if it supports it.
+A Class can support comparison by implementing equals and hashCode inherited from java.lang.Object.
+A Class can also be comparable by implementing Comparable (int compareTo(O o)) and Comparator (int compare(T t, S s)).
+Implement Comparable to sort with Arrays.sort or Collections.sort.
+Write a class that takes Objects and implements Comparator.
+> Person class implements Comparable (compareTo())
+> public class LastNameComparator implements Comparator{ // public int compare(T t, S s){ // whatever you want } }
+Use this like this
+// Arrays.sort(people);  // uses the compareTo method the Person class
+// Arrays.sort(people, new LastNameComparator());
+// Collections.sort(people);
+// Collections.sort(people, new LastNameComparator());
