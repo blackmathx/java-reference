@@ -1,159 +1,156 @@
 
 import java.time.*;
+import java.util.Set;
 import java.time.temporal.ChronoUnit;
 
-@SuppressWarnings("all")
+
 public class e_DateAndTime {
 
-  
   public static void run(){
-    System.out.println("\n======= DateAndTime ================\n");
+    System.out.println("\n======= DateAndTime =====================================================================\n");
+    // The date and time methods are in package java.time.*;
 
-    // TODO rewrite the class for completeness and correctness
 
-
-    // old java.util.Date class replaced with java.time.* classes in Java 8
-
-    // LocalDate contains just a date and no time or time zone
-    // LocalTime contains just the time and no date and no time zone
-    // LocalDateTime contains a date and time but no time zone
-    // ZonedDateTime contains a date, time, and time zone
-
+    // All have a .now() method
     System.out.println(LocalDate.now());
     System.out.println(LocalTime.now());
     System.out.println(LocalDateTime.now());
     System.out.println(ZonedDateTime.now());
 
-//    LocalDateTime.of(int year, int month, int dayOfMonth, int hour, int minute);
-//    LocalDateTime.of(int year, int month, int dayOfMonth, int hour, int minute, int second);
-//    LocalDateTime.of(int year, int month, int dayOfMonth, int hour, int minute, int second, int nanos);
-//    LocalDateTime.of(int year, Month month, int dayOfMonth, int hour, int minute) <, int second, int nanos>);     // also takes Month reference
-    LocalDateTime dateTimeA = LocalDateTime.of(2023, Month.APRIL, 1, 8, 58, 0);
-    System.out.println("date time a: " + dateTimeA);
 
-    LocalDate date1 = LocalDate.now();
-    LocalTime time1 = LocalTime.now();
-    LocalDateTime dateTime1 = LocalDateTime.of(date1, time1);     // also takes LocalDate and LocalTime
-    System.out.println("Date and Time: " + dateTime1);
-
-    System.out.println(date1.getMonth());
-    System.out.println(date1.getYear());
-    System.out.println(date1.getDayOfYear());
-    //...
+    // All have a overloaded .of() method
+    LocalDate ld_1 = LocalDate.of(2025, 1, 2);
+    LocalDate ld_2 = LocalDate.of(2020, Month.MARCH, 23);
+    LocalDate ld_3 = LocalDate.of(2025, Month.of(10), 31);
+    ld_1.getYear();
+    // getMonth(), getDayOfYear(), getDayOfYear(), ..
 
 
-
-    // Month has ENUMs. https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Month.html
-    Month m = Month.of(2);
-    System.out.println(m); // FEBRUARY
-    System.out.println(m.length(false));
-
-    var zoned1 = ZonedDateTime.of(2022, 1, 20, 6, 15, 30, 200, ZoneId.of("US/Eastern"));
-    System.out.println(zoned1);
-
-    // creating ZoneDateTime three ways
-//    ZoneDateTime.of(int year, int month, int dayOfMonth, int hour, int minute, int second, int nanos, ZoneId zone);
-//    ZoneDateTime.of(LocalDate date, LocalTime time, ZoneId zone);
-//    ZoneDateTime.of(LocalDateTime dateTime, ZoneId zone);
+    LocalTime lt_1 = LocalTime.of(12, 58); // hour, minute
+    LocalTime lt_2 = LocalTime.of(12, 58, 30); // hour, minute, second
+    LocalTime lt_3 = LocalTime.of(12, 58, 30, 100); // hour, minute, second, nanosecond
+    lt_1.getHour();
+    lt_1.getMinute();
 
 
-    // Adding to a date
-    // date and time classes are immutable so assign the results so they are not lost
-    var date = LocalDate.of(2022, 3, 23);
-    date = date.plusDays(1);
-    date = date.plusWeeks(2);
-    date = date.plusMonths(1).plusYears(1);
-    date = date.minusYears(2);
-    date = date.minusDays(3);
-    date = date.minusWeeks(2);
-    date = date.minusWeeks(2).minusDays(2);
-
-    var dateTime10 = LocalDateTime.of(2024, 1, 1, 4, 34, 9);
-    dateTime10 = dateTime10.plusDays(1).plusHours(2);
-    dateTime10 = dateTime10.plusSeconds(23);
-    dateTime10 = dateTime10.plusMinutes(2);
-    dateTime10 = dateTime10.minusYears(8);
-
-    System.out.println(dateTime10.getHour());
-    System.out.println(dateTime10.getSecond());
-    // ...
+    LocalDateTime ldt_1 = LocalDateTime.of(2025, 1, 30, 13, 58, 30);
+    LocalDateTime ldt_2 = LocalDateTime.of(ld_1, lt_1);
+    LocalDateTime ldt_3 = LocalDateTime.of(2025, Month.SEPTEMBER, 21, 18, 10, 30);
+    ldt_1.getMonth();
+    ldt_1.getHour();
+    // getYear(), getDayOfWeek(), getDayOfMonth(), getSecond(), ..
 
 
-    var date99 = LocalDate.of(2022, 8, 23);
-    var time99 = LocalTime.of(20, 33);
-    var dateTime99 = LocalDateTime.of(date99, time99);
-    dateTime99 = dateTime99.minusWeeks(4).plusMinutes(20);
+    // Zones
+    Set<String> zoneIds = ZoneId.getAvailableZoneIds();
+    System.out.println(zoneIds.size());
+    for(String z : zoneIds) if(z.contains("East")) System.out.println(z);
 
-    var dateTime = LocalDateTime.now();
-    dateTime = dateTime.minusDays(2).minusMinutes(1).minusSeconds(23);
+
+    ZonedDateTime zdt_0 = ZonedDateTime.now();
+    ZonedDateTime zdt_1 = ZonedDateTime.of(2025, 3, 15, 10, 56, 30, 100, ZoneId.of("America/New_York")); // needs nanos
+    ZonedDateTime zdt_2 = ZonedDateTime.of(ld_1, lt_1, ZoneOffset.of("+05:00")); // (LocalDate, LocalTime, ZoneId)
+    ZonedDateTime zdt_3 = ZonedDateTime.now(ZoneId.of("America/New_York"));
+    ZonedDateTime zdt_4 = ldt_2.atZone(ZoneOffset.of("+05:00"));
+    ZonedDateTime zdt_5 = ldt_2.atZone(ZoneId.of("US/Eastern"));
+
+    ZoneId zid_1 = zdt_1.getZone();
+
+
+    boolean b_1 = lt_1.isAfter(lt_2);
+    boolean b_2 = ld_1.isBefore(ld_2);
+    boolean b_3 = ldt_2.isAfter(ldt_3);
+
+    int i_1 = ld_1.getDayOfMonth();
+    Month m_1 = ld_1.getMonth();
+    int m_2 = ld_1.getMonthValue();
+    int y_1 = ld_1.getYear();
 
 
 
-    //==== PERIOD ======================
-    // Period is used to add to dates: LocalDate, LocalDateTime, ZonedDateTime
-    var date20 = LocalDate.of(2023, 12, 30);
-    Period p1 = Period.ofMonths(2);
-    p1 = Period.ofDays(2);
-    p1 = Period.ofWeeks(1);
-    p1 = Period.ofYears(1);
-    date20 = date20.plus(p1);
-
-    Period p2 = Period.of(1, 0, 3); // Period of 1year, 3 days. Printing it yeilds "P1Y3D"
-    Period p3 = Period.of(0,0,1); // Period of 1 day, Printing it yields "P1D"
-
-    date20 = date20.minus(p3);
 
 
+    //==================================================================================================================
+    System.out.println("\n======= Manipulating Dates and Times ====================================================\n");
+    // Manipulating Dates and Times
 
-    //==== DURATION =====================
-    // Duration is the same as Period but used for time: LocalDateTime, LocalTime, ZonedDateTime
-    var daily = Duration.ofDays(32); // PT24H
-    var hourly = Duration.ofHours(1); // PT1H
-    var minutes =  Duration.ofMinutes(5); // PT5M
-    // Duration.ofSeconds(30); // PT30S
-    // Duration.ofMillis(20); // PT0.02S
-    // Duration.ofNanos(1); // PT0.000000001S
 
-    var date30 = LocalDateTime.of(2024, 1, 9, 16, 30, 0);
-    date30 = date30.plus(hourly);
-    date30 = date30.plus(minutes);
+    LocalDate ld_100 = ld_1.plusDays(1);
+    LocalDate ld_101 = ld_1.plusMonths(1);
+    // plusYears(), plusWeeks(), minusDays(), minusWeeks(), minusMonths(), minusYears()
 
-    // ChronoUnit Enums allow rewriting above Duration as
-    var daily2 = Duration.of(1, ChronoUnit.DAYS);
-    var hourly3 = Duration.of(20, ChronoUnit.HOURS);
-    var second4 = Duration.of(20, ChronoUnit.SECONDS);
-    //var yearly = Period.of(20, ChronoUnit.YEARS); // PERIOD DOES NOT HAVE A METHOD 'of(int unit, Temporal time)'
+    LocalTime lt_100 = lt_1.plusHours(1);
+    LocalTime lt_101 = lt_1.plusMinutes(1);
+    lt_100 = lt_100.plusSeconds(10).plusNanos(10);
+    // minusHours(), minusMinutes(), minusSeconds(), minusNanos()
 
-    // ChronoUnit.MINUTES
-    // ChronoUnit.NANOS
-    // ChronoUnit.MILLIS
+    LocalDateTime ldt_100 = ldt_1.plusDays(1);
+    ldt_100.plusMinutes(1).minusMonths(1);
+    // All the rest of the plus and minus methods
+
+
+    // With Duration and Period you can use certain methods
+    // With Dates you can use ldt.plus(<Period>)
+    // With Times/DateTimes you can use ldt.plus(<Duraction>) or
+
+
+
+
+    //==================================================================================================================
+    System.out.println("\n======= Period ==========================================================================\n");
+    // Period is a day or more of time. Used to add to dates: LocalDate, LocalDateTime, ZonedDateTime
+
+    var per_1 = Period.ofDays(1);
+    var per_2 = Period.ofYears(25);
+    var per_3 = Period.ofWeeks(2);
+    var per_4 = Period.of(1, 3, 20); // Years, Months, Days
+
+
+
+
+
+    //==================================================================================================================
+    System.out.println("\n======= Duration ========================================================================\n");
+    // Duration for smaller units of time.
+    // Used with objects that have a time and stored as hours, minutes, seconds (with fractional seconds)
+
+    Duration dur_1 = Duration.ofDays(1);
+    var dur_2 = Duration.ofHours(4);
+    var dur_3 = Duration.ofMinutes(20);
+    var dur_4 = Duration.ofSeconds(30);
+    var dur_5 = Duration.ofMillis(200);
+
+    var dur_6 = Duration.of(1, ChronoUnit.MINUTES);
+    var dur_7 = Duration.of(20, ChronoUnit.MONTHS);
     // ChronoUnit.CENTURIES, WEEKS, YEARS, ERAS, DECADES, FOREVER, ...
 
-    // ChronoUnit can determine how far apart two Temporal values are. Temporal includes LocalDate, LocalTime, so on in java.time.temporal
-    var time10 = LocalTime.of(3, 45);
-    var time11 = LocalTime.of(18, 32);
-    long diffInMinutes = ChronoUnit.MINUTES.between(time10, time11);
-    long diffInHours = ChronoUnit.HOURS.between(time10, time11); // 14 shows that between truncates instead of rounds (14h 47m == 14)
-    System.out.println(diffInHours);
-
-    // ChronoUnit used to truncate
-    LocalTime time20 = LocalTime.of(21, 23, 59, 23); // 21:23:59.23
-    time20 = time20.truncatedTo(ChronoUnit.MINUTES); // zeros out anything smaller than minuts yielding 21:23
+    // ChronoUnit can determine how far apart two Temporal values are. Temporal includes LocalDate, LocalTime
+    var lt_200 = LocalTime.of(3, 45);
+    var lt_201 = LocalTime.of(18, 32);
+    long diffInMinutes = ChronoUnit.MINUTES.between(lt_200, lt_201);
+    long diffInHours = ChronoUnit.HOURS.between(lt_200, lt_201); // between() truncates instead of rounds (14h 47m == 14)
 
 
 
-    //== INSTANT
-    // Instant represents a specific moment in time in the GMT time zone
-    var instantNow = Instant.now();
-    // do something
-    var duration = Duration.between(instantNow, Instant.now());
-    System.out.println(duration.toMillis());
-
-    var zonedDateTime = ZonedDateTime.of(LocalDate.of(2024, 1, 1), LocalTime.of(12, 15), ZoneId.of("US/Eastern")); // includes zone
-    Instant instant99 = zonedDateTime.toInstant(); // toInstant removes the zone and turns it into an Instant of GMT time
 
 
+    //==================================================================================================================
+    System.out.println("\n======= Instant =========================================================================\n");
+    // Instant represents a specific moment in time in GMT time zone
 
+    var inst_1 = Instant.now();
+    inst_1 = inst_1.plus(Duration.ofDays(1));
+    var inst_2 = zdt_1.toInstant(); // removes the zone and turns it into an Instant of GMT time
+
+    var zdt_200 = ZonedDateTime.of(LocalDate.of(2024, 1, 1), LocalTime.of(12, 15), ZoneId.of("US/Eastern"));
+    Instant inst_100 = zdt_200.toInstant(); // toInstant removes the zone and turns it into an Instant of GMT time
+
+
+
+
+    //==================================================================================================================
+    System.out.println("\n======= Daylight Savings Time============================================================\n");
+    // TODO daylight savings time
 
 
 

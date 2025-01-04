@@ -3,127 +3,155 @@ import java.util.*;
 
 public class d_Collections {
     public static void run(){
-        System.out.print("\n======= Collections ======================\n");
-
-        String desc = """
-                * Make your objects Comparable and Sortable.
-                * Collections Framework uses types that are all in java.util package.
-                * Important interfaces: Collections, Iterator, Comparator, Set, List, Queue, Map, SortedMap.
-                * Collection has methods such as: add, addAll, clear size, isEmpty, toArray.
-                * List: ArrayList, LinkedList, Vector
-                * Queue: PriorityQueue, ArrayDeque
-                * Set: HashSet, LinkedHashSet, TreeSet
-                * Map: HashMap, LinkedHashMap, TreeMap
-                """;
-        System.out.println(desc);
+        System.out.print("\n======= Collections ===================================================================\n");
+        // Make your objects Comparable and Sortable.
+        // Collections Framework uses types that are all in java.util package.
+        // Interfaces: Iterable <- Collection <- (List, Queue, Set)
+        //
+        // Collection has methods such as: add, addAll, contains, remove, size, toArray, clear, isEmpty
+        // List: ArrayList, LinkedList, Vector, Stack
+        // Queue: PriorityQueue, LinkedList, ArrayDeque
+        // Set: HashSet, LinkedHashSet, TreeSet
+        // Map: HashMap, LinkedHashMap, TreeMap
 
 
 
-        System.out.print("\n======= ArrayList ========================\n");
-        System.out.println("*** List is a sub-interface of Collection, ArrayList is an implementation of List.\n");
-        // All ArrayList methods
-        // https://www.w3schools.com/java/java_ref_arraylist.asp
+        System.out.print("\n======= ArrayList =====================================================================\n");
+        // List is a sub-interface of Collection, ArrayList is an implementation of List.
+        // All ArrayList methods https://www.w3schools.com/java/java_ref_arraylist.asp
 
 
-        ArrayList<String> var1 = new ArrayList<>();
-        var1.add("Audi");
-        var1.addAll(Arrays.asList("Jeep", "Ford", "Chevy", "BMW"));
-        var1.add("Mazda");
-        // if index is out of range throws IndexOutOfBoundsException
-        //var1.add(9, "Tesla");
-        String carMake1 = var1.get(0);
-        var1.remove("Mazda"); // removes the first occurrence
-        var1.set(2, "Volvo"); // set replaces item at index i
-        var1.indexOf("Audi");
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(1); // add to end of list
+        arrayList.add(2); // add at end of list
+        //arrayList.add(7, 99); // add at index 7. if out of range then IndexOutOfBoundsException
+        arrayList.addAll(Arrays.asList(1, 99, 2, 98, 3, 97));
+        arrayList.remove(1);
+        arrayList.set(1, 100); // set index to item
+        arrayList.get(0); // returns item at index
+        arrayList.indexOf(2); // returns first index of item
+        arrayList.size();
+        arrayList.contains(1); // returns boolean if contains
+        arrayList.clear();
 
+        Collections.sort(arrayList);
 
-
-        int len = var1.size();
-        boolean contains1 = var1.contains("Mazda");
-        Collections.sort(var1);
-
-        System.out.println(var1); // [Audi, BMW, Chevy, Jeep, Volvo]
-
-        for(String car : var1){
-            System.out.print(car + " ");
-        }
-        System.out.println();
-
-
-
-        System.out.print("\n======= LinkedList =======================\n");
-
-        // All LinkedListMethods
-        // https://www.w3schools.com/java/java_ref_linkedlist.asp
-
-
-        LinkedList<String> var2 = new LinkedList<>();
-        var2.addAll(Arrays.asList("BMW", "Jeep", "Volvo", "Tesla"));
-
-        // LinkedList has the same methods as ArrayList
-        var2.add("Ford");
-        var2.remove("Mazda");
-        String carMake3 = var2.get(2);
-        boolean var4 = var2.contains("BMW");
-
-        // LinkedList provides methods to do some operations more efficiently
-        var2.addFirst("Chevy");
-        var2.addLast("Toyota");
-        var2.removeFirst();
-        var2.removeLast();
-        String carMake4 = var2.getFirst();
-        String carMake5 = var2.getLast();
-
-
-
-
-
-        System.out.print("\n======= HashMap ==========================\n");
-
-        // All HashMap methods
-        // https://www.w3schools.com/java/java_ref_hashmap.asp
-
-
-        HashMap<String, String> capitalCities = new HashMap<>();
-        capitalCities.put("USA", "Washington DC");
-        capitalCities.put("England", "London");
-        capitalCities.put("Germany", "Berlin");
-        capitalCities.put("Norway", "Oslo");
-        capitalCities.put("Italy", "Rome");
-
-        int len2 = capitalCities.size();
-
-        String var7 = capitalCities.get("Italy");
-        String var8 = capitalCities.remove("USA");
-
-
-        // Print
-        for (String i : capitalCities.keySet()) {
-            System.out.println(i);
-        }
-
-        // Print keys and values
-        for (String i : capitalCities.keySet()) {
-            System.out.println("key: " + i + " value: " + capitalCities.get(i));
+        for(Integer val : arrayList){
+            System.out.println(val);
         }
 
 
 
-        System.out.print("\n======= HashSet ==========================\n");
+        System.out.print("\n======= LinkedList ====================================================================\n");
+        // LinkedList implements List and Queue.
+        // All LinkedListMethods https://www.w3schools.com/java/java_ref_linkedlist.asp
 
-        HashSet<String> var20 = new HashSet<String>();
-        var20.add("Volvo");
-        var20.add("BMW");
-        var20.add("Ford");
 
-        var20.remove("Volvo");
-        boolean contains3 = var20.contains("Ford");
+        // LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("A");
+        linkedList.add("B");
+        linkedList.addAll(Arrays.asList("Z", "Y", "x"));
+        linkedList.remove("B");
+        linkedList.get(0); // get at index
+        linkedList.size();
+        linkedList.contains("A");
+        linkedList.indexOf("B");
+        linkedList.clear();
 
-        String[] var21 = var20.toArray(new String[]{});
-        System.out.println(Arrays.toString(var21));
 
-        var20.add("Mazda");
-        System.out.println(var20);
+        // Queue methods: add, peek, poll, offer
+        linkedList.add("A");
+        linkedList.add("B");
+        linkedList.pop(); // pops element from front of stack
+        linkedList.peek(); // retrieves but does not remove first
+        linkedList.poll(); // retrives and removes fist
+        linkedList.push("V"); // pushes element on front of the stack
+
+        // Deque methods: addFirst/Last, getFirst/Last, offerFirst/Last, pollFirst/Last, removeFirst/Last
+        linkedList.addFirst("C");
+        linkedList.addLast("D");
+        linkedList.removeFirst();
+        linkedList.removeLast();
+        linkedList.getFirst();
+        linkedList.getLast();
+
+
+        System.out.print("\n======= Stack =========================================================================\n");
+        // Stack extends Vector, which implements List and Collection
+
+        // Stack
+        Stack<Character> stack = new Stack<>();
+        stack.push('A'); // push element to the front/top of stack
+        stack.push('B'); // push element to the front/top of stack
+        stack.pop(); // pop element at the front/top of the stack
+        stack.peek(); // peek element at the front/top
+        stack.size();
+        stack.isEmpty();
+        stack.clear();
+
+
+
+        System.out.print("\n======= HashMap =======================================================================\n");
+        // HashMap implements Map
+        // All HashMap methods https://www.w3schools.com/java/java_ref_hashmap.asp
+
+
+        // HashMap
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        hashMap.put("One", 1);
+        hashMap.put("Two", 2);
+        hashMap.get("One");
+        hashMap.containsKey("Two");
+        hashMap.containsValue(2);
+        hashMap.remove("Two");
+
+        Set<String> keys = hashMap.keySet();
+
+        for(String s : hashMap.keySet()){
+            System.out.println(s); // Print the keys
+            System.out.println(hashMap.get(s)); // Print the values
+        }
+        hashMap.size();
+        hashMap.clear();
+
+
+
+        System.out.print("\n======= HashSet =======================================================================\n");
+        // HashSet implements Set
+        // Faster than TreeSet but provides no pre sort
+
+        // HashSet
+        HashSet<Double> hashSet = new HashSet<>();
+        hashSet.add(1.1);
+        hashSet.add(2.2);
+        hashSet.addAll(Arrays.asList(3.3, 4.4));
+        hashSet.remove(1.1);
+        hashSet.contains(2.2);
+        hashSet.size();
+        hashSet.isEmpty();
+        hashSet.clear();
+
+
+
+        System.out.print("\n======= TreeSet =======================================================================\n");
+        // TreeSet implements SortedSet and Set
+        // Uses tree for storage. Slower than HashSet but keeps data sorted and has additional methods
+
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(15);
+        treeSet.addAll(Arrays.asList(11, 21));
+        treeSet.remove(20);
+        treeSet.first();
+        treeSet.last();
+        treeSet.contains(15);
+        treeSet.size();
+        treeSet.isEmpty();
+        treeSet.floor(22); // returns greatest element in the set less or equal to the given element, else null
+        treeSet.ceiling(22); // returns the least element greater or equl to the given element, else null
+        treeSet.clear();
 
 
     }
