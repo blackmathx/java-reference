@@ -65,7 +65,7 @@ public class d_Collections {
         linkedList.add("B");
         linkedList.pop(); // pops element from front of stack
         linkedList.peek(); // retrieves but does not remove first
-        linkedList.poll(); // retrives and removes fist
+        linkedList.poll(); // retrieves and removes fist
         linkedList.push("V"); // pushes element on front of the stack
 
         // Deque methods: addFirst/Last, getFirst/Last, offerFirst/Last, pollFirst/Last, removeFirst/Last
