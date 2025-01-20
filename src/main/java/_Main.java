@@ -15,6 +15,7 @@ public class _Main {
 //        h_Enums.run();
 //        i_Threads.run();
 //        z_Sandbox.run();
+//        z_QuickReference.run();
 //        lambda._Runner.run();
 
         System.exit(0);
