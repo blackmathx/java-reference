@@ -44,6 +44,13 @@ public class z_QuickReference {
         String s = str.substring(str.length() -1);
         System.out.println(Integer.parseInt(s)); // 1 integer
 
+        /* words to string array */
+        String words = "the cat is in the house ";
+        String[] strArray = words.split(" ");
+        System.out.println(strArray[strArray.length - 1]); // "house"  ignores trailing space
+        System.out.println(strArray[strArray.length - 1].length()); // 5
+
+
 
 
 
