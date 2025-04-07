@@ -22,22 +22,22 @@ public class e_DateAndTime {
     LocalDate ld_1 = LocalDate.of(2025, 1, 2);
     LocalDate ld_2 = LocalDate.of(2020, Month.MARCH, 23);
     LocalDate ld_3 = LocalDate.of(2025, Month.of(10), 31);
-    ld_1.getYear();
+    int year = ld_1.getYear();
     // getMonth(), getDayOfYear(), getDayOfYear(), ..
 
 
     LocalTime lt_1 = LocalTime.of(12, 58); // hour, minute
     LocalTime lt_2 = LocalTime.of(12, 58, 30); // hour, minute, second
     LocalTime lt_3 = LocalTime.of(12, 58, 30, 100); // hour, minute, second, nanosecond
-    lt_1.getHour();
-    lt_1.getMinute();
+    int hour = lt_1.getHour();
+    int minute = lt_1.getMinute();
 
 
     LocalDateTime ldt_1 = LocalDateTime.of(2025, 1, 30, 13, 58, 30);
     LocalDateTime ldt_2 = LocalDateTime.of(ld_1, lt_1);
     LocalDateTime ldt_3 = LocalDateTime.of(2025, Month.SEPTEMBER, 21, 18, 10, 30);
-    ldt_1.getMonth();
-    ldt_1.getHour();
+    Month mo = ldt_1.getMonth();
+    int hour2 = ldt_1.getHour();
     // getYear(), getDayOfWeek(), getDayOfMonth(), getSecond(), ..
 
 
@@ -85,7 +85,7 @@ public class e_DateAndTime {
     // minusHours(), minusMinutes(), minusSeconds(), minusNanos()
 
     LocalDateTime ldt_100 = ldt_1.plusDays(1);
-    ldt_100.plusMinutes(1).minusMonths(1);
+    LocalDateTime val = ldt_100.plusMinutes(1).minusMonths(1);
     // All the rest of the plus and minus methods
 
 

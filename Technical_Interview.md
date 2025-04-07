@@ -2,11 +2,8 @@
 
 ## 1. What is Java?
 
-Java is a high-level, class-based, strong typed, object-oriented programming language. It is a general-purpose 
-programming language to let developers write once, run anywhere, meaning that compiled Java code can run on all 
-platforms that support Java without the need for recompilation.
-
-
+Java is a strongly typed, class-based, object-oriented programming language. It is a write once, run anywhere language, 
+meaning that compiled Java code can run on a JVM installed on any platform that support Java without recompilation.
 
 ## 2. What are the differences between primitive data types and objects in Java?
 
@@ -18,8 +15,6 @@ objects.
 
 Also, primitives can’t be null, limiting their flexibility (depends on the context) while objects can. For their 
 simplicity, primitives are generally faster to access and manipulate.
-
-
 
 ## 3. What is the difference between String, StringBuilder, and StringBuffer?
 
