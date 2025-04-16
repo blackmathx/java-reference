@@ -66,6 +66,35 @@ public class b_Strings {
     String var306 = String.valueOf(23.4); // returns "23.4"
 
 
+    // ===== STRING METHODS =======================================
+//    str.length();
+//    str.indexOf(st);
+//    str.indexOf(st, startIndex);
+//    str.indexOf(chr);
+//    str.indexOf(chr, startIndex);
+//    str.lastIndexOf(st);
+//    str.lastIndexOf(ch);
+//    str.contains("xyz");
+//    str.equals(other);
+//    str.equalsIgnoreCase(other);
+//    str.substring(start);
+//    str.substring(start, end);
+//    str.replace("e", "i");
+//    str.replaceFirst("e", "i");
+//    str.replaceAll(strRegex, st);
+//    str.toUpperCase();
+//    str.toLowerCase();
+//    str.strip();
+//    str.stripLeading();
+//    str.stripTrailing();
+//    str.concat("x");
+//
+//    // Static String Methods
+//    String.join("java", "cool");
+//    String.valueOf(new int[]{1, 2,3});
+
+
+
     // ===== STRINGBUILDER =======================================
 
     StringBuilder sb = new StringBuilder("Work on your system");
