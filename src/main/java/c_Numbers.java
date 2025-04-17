@@ -8,7 +8,9 @@ public class c_Numbers {
     System.out.println("\n======= Numbers =================\n");
 
     /*
-     * byte, short, int, long, float, double, char. memorize in order
+     * memorize in order:
+     * byte, short, int, long, float, double, char
+     *
      * you get implicit casting from smaller to larger, otherwise explicitly cast them
      * primitives can't be null, where objects can be null. the typical consequence is using 'int id' in an object, it can't be null so use Long or Integer instead
      */
@@ -66,7 +68,7 @@ public class c_Numbers {
 
     // ===== MATH ==============================================
 
-    // java.lang.Math class
+    // import java.lang.Math
     // Note some methods are overloaded so they take mulltiple data types and retrun multiple data types
 
     /*
@@ -100,6 +102,5 @@ public class c_Numbers {
     double var306 = Math.pow(2.1, 2.4);
     double var307 = Math.random(); // returns double that is between 0 inclusive and less than 1. [0, 1). ex: 0.8183029608682497
 
-    
   }
 }

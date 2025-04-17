@@ -8,7 +8,7 @@ public class e_DateAndTime {
 
   public static void run(){
     System.out.println("\n======= DateAndTime =====================================================================\n");
-    // The date and time methods are in package java.time.*;
+    // import java.time.*;
 
 
     // All have a .now() method
@@ -18,7 +18,7 @@ public class e_DateAndTime {
     System.out.println(ZonedDateTime.now());
 
 
-    // All have a overloaded .of() method
+    // All have an overloaded .of() method
     LocalDate ld_1 = LocalDate.of(2025, 1, 2);
     LocalDate ld_2 = LocalDate.of(2020, Month.MARCH, 23);
     LocalDate ld_3 = LocalDate.of(2025, Month.of(10), 31);

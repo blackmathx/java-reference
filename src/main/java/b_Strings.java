@@ -4,7 +4,13 @@ import java.util.Arrays;
 public class b_Strings {
 
   public static void run() {
-    System.out.println("\n======= Strings =================\n");
+    System.out.println("\n======= Strings and Chars =================\n");
+    strings();
+    stringBuilder();
+  }
+
+  //========= STRINGS ========================================
+  private static void strings() {
 
     String str = "Welcome to the jungle";
 
@@ -12,7 +18,7 @@ public class b_Strings {
     int var2 = str.indexOf('c'); // index of first occurance or -1. returns 3
     int var3 = str.indexOf("the"); // index of the first occurance or -1. returns 11
     int var4 = str.indexOf("e ", 7); // with a "from index" parameter. returns 13
-    int var5 = str.indexOf(109); // first occurance of 'm' or -1, which the ascii 'm' is binary 01101101 = 109
+    int var5 = str.indexOf(109); // first occurance of 'm', or -1. the ascii 'm' is binary 01101101 = 109
     int var6 = str.lastIndexOf("he");
     int var7 = str.lastIndexOf("e", 6); // from index number
     int var8 = str.compareTo("Other"); // compares unicode, 0 if same
@@ -46,8 +52,8 @@ public class b_Strings {
     String var25 = str.toUpperCase();
     String var26 = str.toLowerCase();
 
-    // NOTE: use strip() method instead of trim()
-    String var201 = str.trim(); // remove whitespace from leading and trailing. use strip() instead, it's newer
+
+    String var201 = str.trim(); // older method to remove whitespace from leading and trailing. use strip() instead
     String var202 = str.strip(); // newer version of trim(). remove whitespace from leading and trailing including unicode characters
     String var203 = str.stripLeading();
     String var204 = str.stripTrailing();
@@ -58,10 +64,10 @@ public class b_Strings {
     String var209 = String.join("java", "is", "cool");
 
     String var301 = String.valueOf(4);
-    String var302 = String.valueOf(new char[] { 'a', 'b', 'c' }); // only works for char[]. use Arrays.toString() for string such as ["p", "e", "t"]
+    String var302 = String.valueOf(new char[]{'a', 'b', 'c'}); // only works for char[]. use Arrays.toString() for string such as ["p", "e", "t"]
     String var303 = String.valueOf(new String[]{"p", "e", "t"});  // returns the address of the object, [Ljava.lang.String;@5f184fc6. Use Arrays.toString() instead
-    String var3035 = Arrays.toString(new String[] {"p", "e", "t"}); // returns "[p, e, t]"
-    String var304 = String.valueOf(new int[] { 1, 2, 3 }); // returns the Address of object, only works for char[], use Arrays.toString()
+    String var3035 = Arrays.toString(new String[]{"p", "e", "t"}); // returns "[p, e, t]"
+    String var304 = String.valueOf(new int[]{1, 2, 3}); // returns the Address of object, only works for char[], use Arrays.toString()
     String var305 = String.valueOf(true); // returns "true"
     String var306 = String.valueOf(23.4); // returns "23.4"
 
@@ -93,13 +99,16 @@ public class b_Strings {
 //    String.join("java", "cool");
 //    String.valueOf(new int[]{1, 2,3});
 
+  }
 
 
-    // ===== STRINGBUILDER =======================================
 
-    StringBuilder sb = new StringBuilder("Work on your system");
+  // ===== STRINGBUILDER =======================================
+  private static void stringBuilder(){
 
     // StringBuilder does not create a new String each modification, instead you call toString()
+
+    StringBuilder sb = new StringBuilder("Work on your system");
 
     int var401 = sb.length();
     String var402 = sb.substring(1, 3); // from index 1 to exclusive 3, "or"
@@ -115,12 +124,10 @@ public class b_Strings {
     var500.insert(7, " ###"); // also changes sb, same object!, var500 and sb are now "Work on ###*** your system"
     System.out.println(var500);
 
-
     sb.insert(sb.length(), " "); // adds blank space at the end
     sb.replace(3, 6, "%%"); // replace form 3 to before 6 with the value
     sb.delete(3, 5); // delete from 3 to before 5
     sb.deleteCharAt(3); // delete char at index 3
-
 
     // StringBuilder.equals() returns true only when passed the same object as an argument. It does not compare the contents
     // Since Java 11, StringBuilder implements Comparable, so you can use a compareTo method for the equality test
@@ -131,6 +138,23 @@ public class b_Strings {
     System.out.println(var600.toString().equals(var601.toString())); // true, the strings are equal
 
 
+//    sb.append(s);
+//    sb.delete(start, end);
+//    sb.deleteCharAt(index);
+//    sb.insert(index, s);
+//    sb.isEmpty();
+//    sb.indexOf(s);
+//    sb.indexOf(s, start);
+//    sb.lastIndexOf(s);
+//    sb.lastIndexOf(s, index);
+//    sb.reverse();
+//    sb.setCharAt(index, c);
+//    sb.substring(start);
+//    sb.substring(start, end);
+//    sb.equals(other);
+//    sb.setLength(len);
+
   }
+
 
 }

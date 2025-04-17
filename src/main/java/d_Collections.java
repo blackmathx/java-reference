@@ -5,10 +5,13 @@ public class d_Collections {
     public static void run(){
         System.out.print("\n======= Collections ===================================================================\n");
         // Make your objects Comparable and Sortable.
+        //
         // Collections Framework uses types that are all in java.util package.
+        //
         // Interfaces: Iterable <- Collection <- (List, Queue, Set)
         //
-        // Collection has methods such as: add, addAll, contains, remove, size, toArray, clear, isEmpty
+        // Collections have methods such as: add, addAll, contains, remove, size, toArray, clear, isEmpty
+        //
         // List: ArrayList, LinkedList, Vector, Stack
         // Queue: PriorityQueue, LinkedList, ArrayDeque
         // Set: HashSet, LinkedHashSet, TreeSet
