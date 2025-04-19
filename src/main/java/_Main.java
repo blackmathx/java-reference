@@ -15,13 +15,14 @@ public class _Main {
 //        g_LambdasAndStreams.run();
 //        h_Enums.run();
 //        i_Threads.run();
-//        z_QuickReference.run();       // reviewed, incomplete
 
+          // z_QuickReference.convertStringCharsNums();
+          // z_QuickReference.comparing();
+          // z_QuickReference.generics();
 
-
-//        z_Sandbox.run();
-//        lambda._Runner.run();
+          // lambda._Runner.run();
 
         System.exit(0);
     }
+
 }

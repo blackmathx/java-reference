@@ -19,6 +19,17 @@ public class d_Collections {
 
 
 
+
+
+        // List is a sub-interface of Collection, ArrayList is an implementation of List.
+        // List list = new ArrayList();  // Note you don't have to downcast if you use generics: List<String> l = new ArrayList<>();
+        // list.add("one");
+        // list.clear();
+        // List elts = Arrays.asList("a", "b", "c"); // returns fixed size array
+        // Collections.sort(elts);   // sort with Collections static helper methods
+
+
+
         System.out.print("\n======= ArrayList =====================================================================\n");
         // List is a sub-interface of Collection, ArrayList is an implementation of List.
         // All ArrayList methods https://www.w3schools.com/java/java_ref_arraylist.asp
@@ -96,6 +107,16 @@ public class d_Collections {
 
 
         System.out.print("\n======= HashMap =======================================================================\n");
+        // Map holds key/value mappings. There cannot be duplicate keys in a Map, one key to one value.
+        //
+        // Map map = new HashMap();  // HashTable() is slower because it's the synced version
+        // map.put(K key, V value);
+        // getValue, getKey, entrySet, keySet, values...
+        // map.putAll(Map map);
+        // map.remove(K key);
+        // map.get(K key);
+
+
         // HashMap implements Map
         // All HashMap methods https://www.w3schools.com/java/java_ref_hashmap.asp
 
@@ -120,9 +141,20 @@ public class d_Collections {
 
 
 
+
+
         System.out.print("\n======= HashSet =======================================================================\n");
-        // HashSet implements Set
+        // Set: HashSet, LinkedHashSet, TreeSet
+        //
+        // Set does not allow duplicates.
+        //
+        // HashSet allows only one null but order is not guaranteed, and it's faster than TreeSet, LinkedHashSet
+        //
         // Faster than TreeSet but provides no pre sort
+
+
+        // Set set = new HashSet();
+        // set.add("Hello");  // add() returns false if you try to add a duplicate
 
         // HashSet
         HashSet<Double> hashSet = new HashSet<>();
@@ -155,6 +187,20 @@ public class d_Collections {
         treeSet.floor(22); // returns greatest element in the set less or equal to the given element, else null
         treeSet.ceiling(22); // returns the least element greater or equl to the given element, else null
         treeSet.clear();
+
+        System.out.print("\n======= Queues =======================================================================\n");
+
+        // Queue has methods that support ordering in a FIFO basis.
+        // Appends elements to the tail of the queue, returns from head.
+        //
+        // Queue queue = new LinkedList();
+        // queue.offer("a");  // offer() returns false if fails
+        // queue.add("a");    // add() throws an exception if fails
+        // queue.remove();    // remove() returns the element at the head or exception if empty
+        // queue.poll()       // like remove, but returns null if empty
+        // queue.element()    // returns but does not remove head, if empty throws exception
+        // queue.peek()		  // peek() returns but does not remove, if empty returns null
+
 
 
     }

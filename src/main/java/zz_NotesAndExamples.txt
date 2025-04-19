@@ -1,6 +1,7 @@
 Test and explore
 ---------------------------------------------------------------------------------------------
 
+
 1. Look at instance blocks of code. The rule is that static variables/blocks/methods
    in order then instance variables/blocks/methods in order
    
@@ -41,17 +42,7 @@ Test and explore
                var z = x + y; // resulting in int
 
 
-10. equals() vs ==
-    a. Calling == on String objects will check whether they point to the same object in the pool
-    b. Calling equals() on String objects will check the sequence of characters are the same
-    c. Calling == on StringBuilder objects will check whether they point to the same StringBuilder object
-    d. Calling equals() on StringBuilder objects will check whether they point to the same object (StringBuilder inherits equals from java.lang.Object)
-    e. StringBuilder sb1 and sb2, compare values using sb1.toString().equals(sb2.toString())
-    f. Calling String str = "string"; will check if it's in the pool already, calling String str = new String("string"); will add it to the heap
-    g. Calling String str = " string".strip(); will add it to the heap. str1 += "other" returns a new string since strings immutable, like calling new String()
-    h. Calling String str = new String("string").intern(); will tell java to use the string pool
-
-11. Methods
+10. Methods
     a. private, 'package' (no modifier, from a class within the same package), protected (class in the same package or a subclass), public
     b. local variable modifiers: final. Effectively final means it's not modified after assigned
     c. instance variable modifiers: private, 'package', protected, public. Also final (must be initialized once), volatile (this variable may be modified by othe threads),
