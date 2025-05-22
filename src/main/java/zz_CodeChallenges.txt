@@ -1,0 +1,1034 @@
+
+====================================================================================================================
+String Manipulation Challenges
+Challenge 1: Complex String Compression
+Overview
+
+This challenge will test your skills in character tracking, efficient memory management, and manipulating strings directly in memory.
+Sample Task
+
+✅Compress the string "aabcccccaaa" into "a2b1c5a3" with minimal space complexity.
+Solution Example
+
+public String compressString(String input) {
+    if (input == null || input.length() <= 1) return input;
+
+    StringBuilder compressed = new StringBuilder();
+    int count = 1;
+
+    for (int i = 1; i < input.length(); i++) {
+        if (input.charAt(i) == input.charAt(i - 1)) {
+            count++;
+        } else {
+            compressed.append(input.charAt(i - 1)).append(count);
+            count = 1;
+        }
+    }
+
+    // Handle last character sequence
+    compressed.append(input.charAt(input.length() - 1)).append(count);
+
+    return compressed.length() < input.length() ? compressed.toString() : input;
+}
+
+====================================================================================================================
+Challenge 2: Longest Substring Without Repeating Characters
+Overview
+
+This challenge will test your ability to efficiently traverse strings and work with dynamic character sets.
+Sample Task
+
+✅Find the length of the longest substring without repeating characters.
+
+Input: "abcabcbb"
+Output: 3 (substring "abc")
+
+Solution Example
+
+public int lengthOfLongestSubstring(String s) {
+    int maxLen = 0, start = 0;
+    Map<Character, Integer> charIndexMap = new HashMap<>();
+    for (int end = 0; end < s.length(); end++) {
+        char c = s.charAt(end);
+        if (charIndexMap.containsKey(c)) {
+            start = Math.max(start, charIndexMap.get(c) + 1);
+        }
+        charIndexMap.put(c, end);
+        maxLen = Math.max(maxLen, end - start + 1);
+    }
+    return maxLen;
+}
+
+====================================================================================================================
+Challenge 3: Palindrome Permutation Detector
+Overview
+
+This challenge is all about understanding character frequencies and efficient counting. You'll also need to apply some logical reasoning to determine if a string is symmetric.
+Sample Task
+
+Check if "tactcoa" can be rearranged into a palindrome.
+Solution Example
+
+public boolean canFormPalindrome(String s) {
+    int[] charCount = new int[128];
+
+    // Count character frequencies
+    for (char c : s.toCharArray()) {
+        charCount[c]++;
+    }
+
+    // Count characters with odd frequency
+    int oddCount = 0;
+    for (int count : charCount) {
+        if (count % 2 != 0) {
+            oddCount++;
+        }
+
+        // More than one character with odd frequency means no palindrome possible
+        if (oddCount > 1) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+====================================================================================================================
+Challenge 4: String Reversal
+Overview
+
+This is a common coding challenge that tests your understanding of string manipulation without using built-in functions. It can be a bit tricky, especially when you have to deal with different character types and spaces.
+Sample Task
+
+✅Write a function that reverses a given string without using the StringBuilder or String class's reverse() method.
+Solution Example
+
+public class StringReversal {
+    public static String reverseString(String str) {
+        char[] charArray = str.toCharArray();
+        int left = 0, right = charArray.length - 1;
+
+        while (left < right) {
+            char temp = charArray[left];
+            charArray[left] = charArray[right];
+            charArray[right] = temp;
+            left++;
+            right--;
+        }
+
+        return new String(charArray);
+    }
+
+    public static void main(String[] args) {
+        String input = "Welcome to CodingZap";
+        System.out.println(reverseString(input)); // Output: paZgnidoC ot emocleW
+    }
+}
+
+====================================================================================================================
+Challenge 5: First Unique Character
+Overview
+
+Finding the first unique character in a string that tests your knowledge of data structures such as arrays or hash maps, which can complicate the implementation.
+Sample Task
+
+✅Write a function that returns the first non-repeating character in a string.
+Solution Example
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class FirstUniqueCharacter {
+    public static char findFirstUnique(String str) {
+        Map<Character, Integer> charCount = new LinkedHashMap<>();
+
+        for (char c : str.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+
+        for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+
+        return '\0'; // Return null character if no unique character found
+    }
+
+    public static void main(String[] args) {
+        String input = "Google";
+        System.out.println(findFirstUnique(input)); // Output: l
+    }
+}
+
+Explore More: How to Remove HTML Tags from Strings in Java?
+
+
+====================================================================================================================
+Array and Collection-Based Challenges
+Challenge 6: Advanced Merge Intervals
+Overview
+
+This coding challenge will test your skills in sophisticated sorting, complex interval merging, and handling tricky edge cases.
+Sample Task
+
+✅Merge overlapping intervals with complex constraints.
+Solution Example
+
+public List<Interval> mergeIntervals(List<Interval> intervals) {
+    if (intervals == null || intervals.size() <= 1) return intervals;
+
+    // Sort intervals based on start time
+    Collections.sort(intervals, Comparator.comparingInt(a -> a.start));
+
+    List<Interval> merged = new ArrayList<>();
+    Interval current = intervals.get(0);
+
+    for (Interval interval : intervals) {
+        if (interval.start <= current.end) {
+            // Merge intervals with custom merging logic
+            current.end = Math.max(current.end, interval.end);
+        } else {
+            merged.add(current);
+            current = interval;
+        }
+    }
+
+    merged.add(current);
+    return merged;
+}
+
+class Interval {
+    int start;
+    int end;
+    // Constructor and other methods
+}
+
+====================================================================================================================
+Challenge 7: Maximum Subarray Sum
+Overview
+
+This challenge requires you to understand the dynamic programming concepts.
+Sample Task
+
+✅Use Kadane's algorithm to find the largest sum of a contiguous subarray.
+
+Input: [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6 (subarray [4,-1,2,1])
+
+Solution Example
+
+public int maxSubArray(int[] nums) {
+    int maxSum = nums[0], currentSum = nums[0];
+    for (int i = 1; i < nums.length; i++) {
+        currentSum = Math.max(nums[i], currentSum + nums[i]);
+        maxSum = Math.max(maxSum, currentSum);
+    }
+    return maxSum;
+}
+
+
+
+====================================================================================================================
+Also Read: How to Check If a Path is Valid in Java
+Challenge 8: Circular Array Rotation
+Overview
+
+This challenge requires you to understand array manipulation and complex rotation and querying logic.
+Sample Task
+
+✅Rotate an array circularly and perform multiple queries efficiently.
+Solution Example
+
+public class CircularArrayRotation {
+    private int[] rotatedArray;
+
+    public CircularArrayRotation(int[] arr, int rotations) {
+        int n = arr.length;
+        rotatedArray = new int[n];
+
+        // Efficient rotation
+        rotations %= n;
+
+        for (int i = 0; i < n; i++) {
+            rotatedArray[(i + rotations) % n] = arr[i];
+        }
+    }
+
+    public int query(int index) {
+        return rotatedArray[index];
+    }
+}
+
+====================================================================================================================
+Challenge 9: Find Duplicates in an Array
+Overview
+
+This challenge requires you to identify all elements in an array that appear more than once and is crucial for various applications, such as data validation and analysis.
+Sample Task
+
+✅Write a function that finds all duplicate numbers in an integer array.
+Solution Example
+
+import java.util.HashSet;
+
+public class FindDuplicates {
+    public static HashSet<Integer> findDuplicates(int[] nums) {
+        HashSet<Integer> duplicates = new HashSet<>();
+        HashSet<Integer> seen = new HashSet<>();
+
+        for (int num : nums) {
+            if (!seen.add(num)) { // If add returns false, it's a duplicate
+                duplicates.add(num);
+            }
+        }
+
+        return duplicates;
+    }
+
+    public static void main(String[] args) {
+        int[] input = {1, 2, 3, 4, 2, 3, 5};
+        System.out.println(findDuplicates(input)); // Output: [2, 3]
+    }
+}
+
+====================================================================================================================
+Challenge 10: Complex Collection Stream Processing
+Overview
+
+To tackle this challenge you'll need a solid understanding of advanced Stream API concepts, especially complex filtering and mapping.
+Sample Task
+
+✅Perform multi-stage, complex data transformations using Java Streams.
+Solution Example
+
+public List<Employee> processEmployeeData(List<Employee> employees) {
+    return employees.stream()
+        .filter(e -> e.getDepartment().equals("Engineering"))
+        .sorted(Comparator.comparing(Employee::getSalary).reversed())
+        .map(e -> {
+            // Complex transformation logic
+            e.setBonusEligibility(calculateBonusEligibility(e));
+            return e;
+        })
+        .limit(10)
+        .collect(Collectors.toList());
+}
+
+
+====================================================================================================================
+Algorithms and Data Structures Challenges
+Challenge 11: Merge K Sorted Lists
+Overview
+
+Managing multiple lists and optimizing time complexity using techniques like min-heaps can be quite tricky.
+Sample Task
+
+✅Merge multiple sorted linked lists into one sorted list.
+Solution Example
+
+public ListNode mergeKLists(ListNode[] lists) {
+    PriorityQueue<ListNode> pq = new PriorityQueue<>(Comparator.comparingInt(n -> n.val));
+    for (ListNode list : lists) {
+        if (list != null) pq.add(list);
+    }
+    ListNode dummy = new ListNode(0), current = dummy;
+    while (!pq.isEmpty()) {
+        current.next = pq.poll();
+        current = current.next;
+        if (current.next != null) pq.add(current.next);
+    }
+    return dummy.next;
+}
+
+====================================================================================================================
+Challenge 12: Find the Median in a Stream
+Overview
+
+Finding the Median in a Stream requires you to master heaps (max-heap and min-heap) and real-time balancing for performance.
+Sample Task
+
+✅Continuously calculate the median as numbers are added to a dataset.
+Solution Example
+
+class MedianFinder {
+    private PriorityQueue<Integer> small = new PriorityQueue<>(Collections.reverseOrder());
+    private PriorityQueue<Integer> large = new PriorityQueue<>();
+
+    public void addNum(int num) {
+        small.add(num);
+        large.add(small.poll());
+        if (small.size() < large.size()) small.add(large.poll());
+    }
+
+    public double findMedian() {
+        if (small.size() > large.size()) return small.peek();
+        return (small.peek() + large.peek()) / 2.0;
+    }
+}
+
+====================================================================================================================
+Challenge 13: Implementing a Stack Using Queues
+Overview
+
+Implementing data structures using other data structures tests your knowledge of their properties and behavior under different operations.
+Sample Task
+
+✅Create a stack using two queues.
+Solution Example
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class StackUsingQueues {
+    private Queue<Integer> queue1;
+    private Queue<Integer> queue2;
+
+    public StackUsingQueues() {
+        queue1 = new LinkedList<>();
+        queue2 = new LinkedList<>();
+    }
+
+    public void push(int x) {
+        queue2.offer(x);
+
+        while (!queue1.isEmpty()) {
+            queue2.offer(queue1.poll());
+        }
+
+        Queue<Integer> tempQueue = queue1;
+        queue1 = queue2;
+        queue2 = tempQueue;
+    }
+
+    public int pop() {
+      return queue1.poll();
+   }
+
+   public int top() {
+      return queue1.peek();
+   }
+
+   public boolean empty() {
+      return queue1.isEmpty();
+   }
+
+   public static void main(String[] args) {
+       StackUsingQueues stack = new StackUsingQueues();
+       stack.push(1);
+       stack.push(2);
+       System.out.println(stack.pop()); // Output: 2
+   }
+}
+
+====================================================================================================================
+Challenge 14: Binary Search Implementation
+Overview
+
+Implementing binary search requires you to understand searching algorithms and efficient data handling within sorted data sets.
+Sample Task
+
+✅Write a binary search function that returns the index of the target value in a sorted array.
+Solution Example
+
+public class BinarySearch {
+    public static int binarySearch(int[] nums, int target) {
+      int left = 0;
+      int right = nums.length - 1;
+
+      while (left <= right) {
+          int mid = left + (right - left) / 2;
+
+          if (nums[mid] == target)
+              return mid;
+          else if (nums[mid] < target)
+              left = mid + 1;
+          else
+              right = mid - 1;
+      }
+
+      return -1; // Target not found
+   }
+
+   public static void main(String[] args) {
+       int[] input = {1, 2, 3, 4, 5};
+       System.out.println(binarySearch(input, 3)); // Output: index of target value (e.g., index is '2')
+   }
+}
+
+Also Read: How to Get the Index Value of a Map in Java
+
+
+====================================================================================================================
+Error Handling and Exception Challenges
+Challenge 15: Advanced Exception Translation
+Overview
+
+Advance exception translation requires you to master complex error mapping, preserving original context, and providing meaningful error information.
+Sample Task
+
+✅Create a robust exception translation and handling mechanism.
+Solution Example
+
+public class ExceptionTranslator {
+    public static <T> T translateException(ExceptionSupplier<T> supplier) {
+        try {
+            return supplier.get();
+        } catch (IOException e) {
+            throw new BusinessException("File processing error", e);
+        } catch (SQLException e) {
+            throw new DatabaseException("Database operation failed", e);
+        } catch (Exception e) {
+            throw new GenericBusinessException("Unexpected error", e);
+        }
+    }
+
+    @FunctionalInterface
+    public interface ExceptionSupplier<T> {
+        T get() throws Exception;
+    }
+
+    // Custom exception classes
+    public static class BusinessException extends RuntimeException {
+        public BusinessException(String message, Throwable cause) {
+            super(message, cause);
+        }
+    }
+}
+
+====================================================================================================================
+Challenge 16: Fluent Validation Framework
+Overview
+
+This challenge requires you to implement complex validation logic, flexible rule composition, and error aggregation.
+Sample Task
+
+✅Design a flexible validation mechanism with a fluent interface.
+Solution Example
+
+public class FluentValidator<T> {
+    private final T object;
+    private final List<ValidationError> errors = new ArrayList<>();
+
+    public FluentValidator(T object) {
+        this.object = object;
+    }
+
+    public FluentValidator<T> validate(Predicate<T> rule, String errorMessage) {
+        if (!rule.test(object)) {
+            errors.add(new ValidationError(errorMessage));
+        }
+        return this;
+    }
+
+    public void throwIfInvalid() {
+        if (!errors.isEmpty()) {
+            throw new ValidationException(errors);
+        }
+    }
+
+    public static class ValidationError {
+        private final String message;
+        // Constructor, getter
+    }
+
+    public static class ValidationException extends RuntimeException {
+        private final List<ValidationError> errors;
+        // Constructor, getter
+    }
+}
+
+====================================================================================================================
+Challenge 17: Retry Mechanism
+Overview
+
+You’ll find it tough to balance retry logic with efficient error handling and avoid infinite loops or performance degradation.
+Sample Task
+
+✅Implement a system to retry a failing method up to a set number of attempts.
+Solution Example
+
+public void retryableOperation(Runnable operation, int maxRetries) {
+    int attempts = 0;
+    while (attempts < maxRetries) {
+        try {
+            operation.run();
+            break;
+        } catch (Exception e) {
+            attempts++;
+            if (attempts == maxRetries) throw e;
+        }
+    }
+}
+
+
+====================================================================================================================
+Recursion and Backtracking Challenges
+Challenge 18: Generate All Permutations
+Overview
+
+Recursion with backtracking requires you to carefully manage state and avoid duplicates to ensure efficient execution.
+Sample Task
+
+✅Generate all possible orderings of characters in a string.
+Solution Example
+
+public List<String> permute(String str) {
+    List<String> result = new ArrayList<>();
+    backtrack(result, new StringBuilder(), new boolean[str.length()], str);
+    return result;
+}
+
+private void backtrack(List<String> result, StringBuilder sb, boolean[] used, String str) {
+    if (sb.length() == str.length()) {
+        result.add(sb.toString());
+        return;
+    }
+    for (int i = 0; i < str.length(); i++) {
+        if (used[i]) continue;
+        used[i] = true;
+        sb.append(str.charAt(i));
+        backtrack(result, sb, used, str);
+        used[i] = false;
+        sb.deleteCharAt(sb.length() - 1);
+    }
+}
+
+====================================================================================================================
+Challenge 19: Solve N-Queens Problem
+Overview
+
+This challenge requires you to backtrack and validate constraints (rows, columns, diagonals) for every placement.
+Sample Task
+
+✅Place N queens on an N×N chessboard such that no two queens threaten each other.
+Solution Example
+
+public List<List<String>> solveNQueens(int n) {
+    List<List<String>> result = new ArrayList<>();
+    char[][] board = new char[n][n];
+    for (char[] row : board) Arrays.fill(row, '.');
+    backtrack(0, board, result);
+    return result;
+}
+
+private void backtrack(int row, char[][] board, List<List<String>> result) {
+    if (row == board.length) {
+        result.add(construct(board));
+        return;
+    }
+    for (int col = 0; col < board.length; col++) {
+        if (isValid(board, row, col)) {
+            board[row][col] = 'Q';
+            backtrack(row + 1, board, result);
+            board[row][col] = '.';
+        }
+    }
+}
+
+private boolean isValid(char[][] board, int row, int col) {
+    for (int i = 0; i < row; i++)
+        if (board[i][col] == 'Q' || (col - (row - i) >= 0 && board[i][col - (row - i)] == 'Q') ||
+            (col + (row - i) < board.length && board[i][col + (row - i)] == 'Q')) return false;
+    return true;
+}
+
+private List<String> construct(char[][] board) {
+    List<String> result = new ArrayList<>();
+    for (char[] row : board) result.add(new String(row));
+    return result;
+}
+
+====================================================================================================================
+Challenge 20: Sudoku Solver
+Overview
+
+You will need to implement backtracking effectively while ensuring that all Sudoku rules are adhered to during the process.
+Sample Task
+
+✅Write a function that solves a given Sudoku puzzle by filling in empty cells.
+Solution Example
+
+public class SudokuSolver {
+
+    public static boolean solveSudoku(char[][] board) {
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[0].length; col++) {
+                if (board[row][col] == '.') { // Find an empty cell
+                    for (char num = '1'; num <= '9'; num++) { // Try numbers from '1' to '9'
+                        if (isValid(board, row, col, num)) {
+                            board[row][col] = num; // Place number
+                            if (solveSudoku(board)) return true; // Recur
+                            board[row][col] = '.'; // Backtrack
+                        }
+                    }
+                    return false; // No valid number found
+                }
+            }
+        }
+
+        return true; // Solved successfully
+    }
+
+    private static boolean isValid(char[][] board, int row, int col, char num) {
+        for (int i = 0; i < 9; i++) {
+            if (board[row][i] == num || board[i][col] == num ||
+                board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == num)
+                return false;
+        }
+
+        return true;
+    }
+
+   public static void main(String[] args) {
+       char[][] board = {
+           {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+           {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+           {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+           {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+           {'4', '.', '9', '8', '.', '3', '.', '.', '1'},
+           {'7', '.', '.', '2', '4', '.', '.', '9', '.'},
+           {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+           {'.', '.', '2', '7', '5', '6', '9', '.', '.'},
+           {'.', '8', '.', '.', '2', '.', '.', '4', '.'}
+       };
+
+       if(solveSudoku(board)) {
+          System.out.println("Sudoku solved successfully!");
+       } else {
+          System.out.println("No solution exists.");
+       }
+
+       for(char[] row : board){
+          System.out.println(row);
+       }
+   }
+}
+
+
+====================================================================================================================
+Concurrency and Multithreading Challenges
+Challenge 21: Producer-Consumer Problem
+Overview
+
+The Producer-Consumer problem involves two types of processes: producers that generate data and consumers that process it. They share a common buffer or queue. This problem requires you to carefully synchronize access to this shared resource to avoid race conditions and ensure correct data exchange.
+Sample Task
+
+✅Implement a solution using Java's BlockingQueue to handle producer-consumer interactions safely.
+Solution Example
+
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
+class Producer implements Runnable {
+    private final BlockingQueue<Integer> queue;
+
+    public Producer(BlockingQueue<Integer> queue) {
+        this.queue = queue;
+    }
+
+    @Override
+    public void run() {
+        try {
+            for (int i = 0; i < 10; i++) { // Produce items
+                queue.put(i);
+                System.out.println("Produced: " + i);
+                Thread.sleep(100); // Simulate time taken to produce an item
+            }
+            queue.put(-1); // End signal for consumer
+        } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+    }
+}
+
+class Consumer implements Runnable {
+   private final BlockingQueue<Integer> queue;
+
+   public Consumer(BlockingQueue<Integer> queue) { this.queue = queue; }
+
+   @Override
+   public void run() {
+       try {
+           while(true){
+               int item = queue.take();
+               if(item == -1){ break; }
+               System.out.println("Consumed: " + item);
+               Thread.sleep(150); // Simulate time taken to consume an item
+           }
+       } catch(InterruptedException e){ Thread.currentThread().interrupt(); }
+   }
+}
+
+public class ProducerConsumerExample {
+   public static void main(String[] args){
+       BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(5);
+       Thread producerThread = new Thread(new Producer(queue));
+       Thread consumerThread = new Thread(new Consumer(queue));
+
+       producerThread.start();
+       consumerThread.start();
+
+       try{
+           producerThread.join();
+           consumerThread.join();
+       } catch(InterruptedException e){ Thread.currentThread().interrupt(); }
+   }
+}
+
+====================================================================================================================
+Challenge 22: Deadlock Detection and Resolution
+Overview
+
+Deadlocks occur when two or more threads are blocked forever waiting for each other to release resources. It is crucial in concurrent programming, requiring you to understand how deadlocks occur (circular wait, mutual exclusion) and implement strategies to prevent or resolve them, such as using tryLock() or resource ordering.
+Sample Task
+
+✅Simulate a deadlock scenario with two threads and two resources, and then resolve the deadlock by ensuring proper lock ordering or implementing a timeout mechanism.
+Solution Example
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+class DeadlockDemo {
+    private final Lock lock1 = new ReentrantLock();
+    private final Lock lock2 = new ReentrantLock();
+
+    public void method1() {
+        try {
+            lock1.lock();
+            Thread.sleep(100); // Simulate work
+            lock2.lock();
+            System.out.println("Method1 acquired both locks");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        } finally {
+            lock2.unlock();
+            lock1.unlock();
+        }
+    }
+
+    public void method2() {
+        try {
+            lock2.lock();
+            Thread.sleep(100); // Simulate work
+            lock1.lock();
+            System.out.println("Method2 acquired both locks");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        } finally {
+            lock1.unlock();
+            lock2.unlock();
+        }
+    }
+}
+
+public class DeadlockResolution {
+    public static void main(String[] args) {
+        DeadlockDemo demo = new DeadlockDemo();
+
+        Thread t1 = new Thread(demo::method1);
+        Thread t2 = new Thread(demo::method2);
+
+        t1.start();
+        t2.start();
+    }
+}
+
+
+====================================================================================================================
+Object-Oriented Programming (OOP) Design Challenges
+Challenge 23: Reflection-Based Dynamic Proxy Validator
+Overview
+
+This challenge required you to create dynamic proxies, implement complex validation logic, and intercept method calls at runtime.
+Sample Task
+
+✅Implement a dynamic proxy validation system that can validate object state and method invocations using annotations and reflection.
+Solution Example
+
+public class DynamicValidationProxy {
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target({ElementType.METHOD, ElementType.FIELD})
+    public @interface Validate {
+        String regex() default ".*";
+        int minLength() default 0;
+        int maxLength() default Integer.MAX_VALUE;
+    }
+
+    public static <T> T createValidatedProxy(T target, Class<T> interfaceType) {
+        return (T) Proxy.newProxyInstance(
+            interfaceType.getClassLoader(),
+            new Class<?>[] { interfaceType },
+            new ValidationInvocationHandler<>(target)
+        );
+    }
+
+    private static class ValidationInvocationHandler<T> implements InvocationHandler {
+        private final T target;
+
+        public ValidationInvocationHandler(T target) {
+            this.target = target;
+        }
+
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            // Validate method parameters
+            validateMethodParameters(method, args);
+
+            // Invoke original method
+            Object result = method.invoke(target, args);
+
+            // Validate return value
+            validateReturnValue(method, result);
+
+            return result;
+        }
+
+        private void validateMethodParameters(Method method, Object[] args) {
+            // Complex parameter validation logic using reflection
+            // Check annotations, validate input constraints
+        }
+
+        private void validateReturnValue(Method method, Object result) {
+            // Complex return value validation logic
+            // Check annotations, validate output constraints
+        }
+    }
+}
+
+====================================================================================================================
+Challenge 24: Implementing an ATM System
+Overview
+
+This challenge involves designing an ATM system that allows users to perform transactions like checking balance, withdrawing money, and depositing money. The design must consider security aspects (e.g., PIN management), proper handling of user sessions, and ensuring data integrity during transactions. This requires you to balance security, user experience, and system reliability.
+Sample Task
+
+✅Create classes for ATM, Account, and User with methods for performing various operations securely.
+Solution Example
+
+import java.util.HashMap;
+
+class Account {
+    private String accountNumber;
+    private double balance;
+
+    public Account(String accountNumber) {
+        this.accountNumber = accountNumber;
+        this.balance = 0.0;
+    }
+
+    public double getBalance() { return balance; }
+
+    public void deposit(double amount) { balance += amount; }
+
+    public boolean withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            return true;
+        }
+        return false;
+    }
+}
+
+class User {
+   private String name;
+   private String pin;
+
+   public User(String name, String pin) {
+       this.name = name;
+       this.pin = pin;
+   }
+
+   public boolean validatePin(String pin) {
+       return this.pin.equals(pin);
+   }
+
+   public String getName() { return name; }
+}
+
+class ATM {
+   private HashMap<String, Account> accounts = new HashMap<>();
+
+   public void addAccount(Account account) { accounts.put(account.accountNumber(), account); }
+
+   public Account getAccount(String accountNumber) { return accounts.get(accountNumber); }
+
+   public void deposit(String accountNumber, double amount) {
+       Account account = getAccount(accountNumber);
+       if (account != null) account.deposit(amount);
+   }
+
+   public boolean withdraw(String accountNumber, double amount) {
+       Account account = getAccount(accountNumber);
+       return account != null && account.withdraw(amount);
+   }
+
+   public double checkBalance(String accountNumber) {
+       Account account = getAccount(accountNumber);
+       return account != null ? account.getBalance() : -1;
+   }
+}
+
+public class ATMSystem {
+   public static void main(String[] args){
+       ATM atm = new ATM();
+
+       Account acc1 = new Account("12345");
+       atm.addAccount(acc1);
+
+       User user = new User("Bob", "1234");
+
+       atm.deposit("12345", 500.0);
+       System.out.println("Balance: $" + atm.checkBalance("12345")); // Output: Balance: $500.0
+
+       if(atm.withdraw("12345", 200.0)){
+           System.out.println("Withdrawal successful.");
+       } else{
+           System.out.println("Insufficient funds.");
+       }
+
+       System.out.println("Balance after withdrawal: $" + atm.checkBalance("12345")); // Output: Balance after withdrawal: $300.0
+   }
+}
+
+
+====================================================================================================================
+Challenge 25: Implement a Chat Application
+Overview
+
+Balancing real-time constraints, managing user connections, and ensuring scalability requires careful design and optimization on your part.
+Sample Task
+
+✅Define classes for User, Message, and ChatRoom.
+Solution Example
+
+class User {
+    String name;
+    User(String name) {
+        this.name = name;
+    }
+}
+
+class Message {
+    User sender;
+    String content;
+
+    Message(User sender, String content) {
+        this.sender = sender;
+        this.content = content;
+    }
+}
+
+class ChatRoom {
+    String roomName;
+    List<Message> messages = new ArrayList<>();
+    List<User> users = new ArrayList<>();
+
+    ChatRoom(String roomName) {
+        this.roomName = roomName;
+    }
+
+    void sendMessage(User user, String content) {
+        Message message = new Message(user, content);
+        messages.add(message);
+        System.out.println(user.name + ": " + content);
+    }
+}
